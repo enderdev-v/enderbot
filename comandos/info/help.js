@@ -23,7 +23,7 @@ module.exports = {
         return message.channel.send(`hola  estas son las categorias de mis comandos \n\ info \n\ enderbot \n\ utilidad \n\ diversion \n\ moderacion`)
       }
 
-      return message.channel.send(`los comandos de youtube son: \n\ e!channel \n\ e!info \n\ e!team \n\ e!video`)
+      return message.channel.send(`los comandos de youtube son: \n\ e!channel \n\ e!enderinfo \n\ e!team \n\ e!video`)
     }
 
     if(message.guild.id === `841476632978915328`) return message.channel.send(`hola  estas son las categorias de mis comandos \n\ info \n\ enderbot \n\ utilidad \n\ diversion \n\ moderacion \n\ youtube \n\ musica`)

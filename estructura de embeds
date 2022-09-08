@@ -1,8 +1,0 @@
-let embed = new Discord.MessageEmbed()
-.setTitle('')
-.setThumbnail(``)
-.setColor(00000)
-.setDescription('')
-.addField(``, ``)
-.setimage("")
-.setFooter(``)
