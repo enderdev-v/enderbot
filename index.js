@@ -2,8 +2,6 @@ const Discord = require(`discord.js`);
 const intents = new Discord.Intents(32767);
 const client = new Discord.Client({ intents });
 
-const keepAlive = require('./server.js');
-const express = require("express")().get("/", (req, res) => res.send("enderbot listo y ready")).listen(3000)
 
 // handler
 
