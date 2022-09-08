@@ -64,5 +64,5 @@ client.distube.on("addSong", async (queue, song) => {
 
 
 
-client.login("ODYyOTA1MjExMDAxNTAzNzc0.G3krIS.bQbrJS0VFIjQD1wgfaMxQ7Kd0BxbNSiZWBrJJI");
+client.login("ODYyOTA1MjExMDAxNTAzNzc0.GmppD_.iJt2zCdhIv3sIkbh86DzfnWJXQCU1GCPD6DNQk");
 console.log(`Iniciado con node ${process.version}`)
