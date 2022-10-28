@@ -2,6 +2,9 @@ const Discord = require(`discord.js`);
 const intents = new Discord.Intents(32767);
 const client = new Discord.Client({ intents });
 
+const keepAlive = require('./server.js');
+
+const express = require("express")().get("/", (req,res)=>res.send("enderbot listo")).listen(3000)
 
 // handler
 
@@ -20,8 +23,15 @@ for (const folders of commands) {
 	}
 }
                                    
+/*
+
+
 client.on("debug", ( e ) => console.log(e));
 client.once("ready", () => console.log("enderbot ready"))
+
+*/
+
+
 // event handler
 
 const events = fs.readdirSync(path.join(__dirname, `eventos`))
@@ -62,5 +72,5 @@ client.distube.on("addSong", async (queue, song) => {
 
 
 
-client.login("ODYyOTA1MjExMDAxNTAzNzc0.GmppD_.iJt2zCdhIv3sIkbh86DzfnWJXQCU1GCPD6DNQk");
+client.login(process.env.token)
 console.log(`Iniciado con node ${process.version}`)

@@ -6,14 +6,18 @@ module.exports = {
 
   async  execute (client, message, args){
 
-		var Memes = [ "https://cdn.discordapp.com/attachments/920512164387778561/923984094445064192/OIP_1.jpeg","https://cdn.discordapp.com/attachments/920512164387778561/923984094197588039/1640231031617.png", "https://cdn.discordapp.com/attachments/920512164387778561/923984093216116736/1640230805578.jpg"]
-  var Aleatoria = Math.floor(Math.random()*(Memes.length));
+		let memes = [
+      "https://media.discordapp.net/attachments/1033038093294522408/1033038169635037184/373ca555d1392429ad3b20601b491846.jpg",
+      "https://media.discordapp.net/attachments/1033038093294522408/1033038169182048276/b088c091ed7a17f5d038de91b6f4ee09.jpg",
+      "https://media.discordapp.net/attachments/1033038093294522408/1033038168808751165/OIP_6.jpg"
+    ]
+  let aleatorio = Math.floor(Math.random()*(memes.length));
 
     let embed = new Discord.MessageEmbed()
-    .setImage(Memes[Aleatoria])
+    .setTitle("Nuevo Meme")
+    .setImage(memes[aleatorio])
     .setColor(0x04f6e6)
-    .setFooter(`Meme pedido por: ${message.author.username}`);
-
+    
     message.channel.send({ embeds: [embed] });
 
 

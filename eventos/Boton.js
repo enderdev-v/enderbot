@@ -9,7 +9,7 @@ module.exports = {
           .setTitle(`Apply para staff`)
           .setCustomId(`apply`);
 
-        let XD = new Discord.Invitr
+        
 
         let option = new Discord.TextInputComponent()
           .setCustomId(`A`)
