@@ -1,3 +1,5 @@
+const chalk = require('chalk');
+
 module.exports = {
 	name: `ready`,
 	run(client) {
@@ -17,7 +19,7 @@ module.exports = {
     }, 50000)
 		
 
-    console.log("enderbot listo")
+    console.log(chalk.italic.cyan`enderbot listo`)
     
 		
 	}

@@ -1,5 +1,5 @@
  const { ShardingManager } = require("discord.js");
-
+const chalk = require("chalk")
 const mySecret = process.env['token']
 
 let manager = new ShardingManager('./index.js', {
@@ -9,23 +9,13 @@ let manager = new ShardingManager('./index.js', {
 })
 
 // Emitted when a shard is created
-manager.once("shardCreate", async (shard) => {
+manager.on("shardCreate", async (shard) => {
 
-  console.log(`Shards: ${shard.id} lanzada`)
+  console.log(chalk.bold.cyan`Shards:` + chalk.bold.green` ${shard.id} lanzada`)
 
   shard.on('error', (error) => {
      console.error(error) 
-  });
-  shard.on('disconnect', (a, b) => {
-        console.log('Shard disconnected')
-        console.log(a)
-        console.log(b)
-    })
-    shard.on('reconnecting', (a, b) => {
-        console.log('Shard reconnecting')
-        console.log(a)
-        console.log(b)
-    })
+  })
     shard.on('death', (a, b) => {
         console.log('Shard died')
         console.log(a)
