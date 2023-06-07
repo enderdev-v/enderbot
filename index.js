@@ -47,11 +47,14 @@ client.once("ready", () => console.log("enderbot ready"))
 // event handler
 
 const events = fs.readdirSync(path.join(__dirname, `eventos`))
-for (const file of events) {
-	const event = require(path.join(__dirname, `eventos`, file))
-	client.on(event.name, async (...args) => event.run(client, ...args));
-}
 
+for (const folders of events) {
+	const folder = fs.readdirSync(path.join(__dirname, `eventos`, folders))
+	for (const file of folder) {
+	const event = require(path.join(__dirname, `eventos`, folders, file))
+	client.on(event.name, async (...args) => event.run(client, ...args));
+	}
+}
 
 // Distube
 
