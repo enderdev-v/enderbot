@@ -91,4 +91,4 @@ process.on('unhandledRejection', error => {
 });
 
 client.login(process.env.token)
-console.log(chalk.cyan`Iniciado con ${process.version}`)
+console.log(chalk.bold.cyan`Iniciado con ${process.version}`)
