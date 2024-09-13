@@ -18,7 +18,6 @@ const options = {
 @Declare({
     name: "avatar",
     description: "obtener el avatar de un usuario",
-    defaultMemberPermissions: ["ModerateMembers"],
     integrationTypes: ["GuildInstall"]
 })
 @Options(options)

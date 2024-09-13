@@ -5,7 +5,7 @@ export default createEvent({
         if (message.content.includes(("hola").toLowerCase()) || message.content.includes(("ola").toLowerCase())) {
             message.reply({ content: `hola ${message.author} musho gusto` });
         }
-        if (!message.content.startsWith("enderbot")) return;
+        if (!message.content.startsWith("enderbot ")) return;
         if (message.content.includes(("amigos").toLowerCase())) {
             message.reply({ content: `hola mis amigos son ThemurftBot y endkachu :D` });
         }

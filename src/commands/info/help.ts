@@ -17,8 +17,7 @@ const options = {
 }
 @Declare({
     name: "help",
-    description: "Desmutear a un usuario",
-    defaultMemberPermissions: ["ModerateMembers"],
+    description: "Mostrar comandos que tiene",
     integrationTypes: ["GuildInstall"]
 })
 @Options(options)
@@ -45,7 +44,7 @@ export default class HelpCommand extends Command {
 		cmds.forEach(cmd => {		
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			const command = require(`../../commands/${categoria}/${cmd}`);
-			commands.push(`* ${command.default.name}`);
+			commands.push(`* ${(new command.default()).name}`);
 		});	
 
 		ctx.write({ content: `# Comandos ${categoria} \n ${commands.join('\n')}` });

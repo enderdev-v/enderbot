@@ -11,14 +11,13 @@ import { Watch, Yuna } from "yunaforseyfert";
 
 const options = {
     question: createStringOption({
-        description: "get a a category",
+        description: "question",
         required: true
     })
 }
 @Declare({
-    name: "help",
-    description: "Desmutear a un usuario",
-    defaultMemberPermissions: ["ModerateMembers"],
+    name: "8ball",
+    description: "Prueba tu suerte",
     integrationTypes: ["GuildInstall"]
 })
 @Options(options)

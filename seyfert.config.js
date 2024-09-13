@@ -14,7 +14,6 @@ const seyfert = config.bot({
         output: "src", // No touch
         commands: "commands",
         events: "events",
-        components: "components"
     }, 
  });
 export default seyfert

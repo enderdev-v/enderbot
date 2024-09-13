@@ -16,8 +16,8 @@ const options = {
     })
 }
 @Declare({
-    name: "help",
-    description: "Desmutear a un usuario",
+    name: "clear",
+    description: "Borrar mensajes",
     defaultMemberPermissions: ["ModerateMembers"],
     integrationTypes: ["GuildInstall"]
 })
