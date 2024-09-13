@@ -1,0 +1,46 @@
+[RAM: 114.86 MB] [ INFO ] #0 Preparing buckets
+[RAM: 116.15 MB] [ INFO ] Spawn shard 0
+[RAM: 116.25 MB] [ INFO ] 1 buckets created
+[RAM: 116.39 MB] [ INFO ] Spawn shards
+[RAM: 116.45 MB] [ INFO ] 0 add to connect queue
+[RAM: 116.61 MB] [ DEBUG ] [Shard #0] Connecting to wss://gateway.discord.gg/?v=10
+[RAM: 111.54 MB] [ DEBUG ] [Shard #0] Hello 
+[RAM: 111.57 MB] [ DEBUG ] [Shard #0] Sending unrequested heartbeat (Ack=true)
+[RAM: 111.59 MB] [ INFO ] [Shard #0] Sending: Identify {
+ "token": "Bot ODYyOTA1MjExMDAxNTAzNzc0.******.**************************************",
+ "compress": false,
+ "properties": {
+  "os": "win32",
+  "browser": "Seyfert",
+  "device": "Seyfert"
+ },
+ "shard": [
+  0,
+  1
+ ],
+ "intents": 33315
+}
+[RAM: 111.61 MB] [ DEBUG ] Processing queue. Remaining: 116 Length: 1
+[RAM: 111.63 MB] [ DEBUG ] [Shard #0] HeartbeatAck 
+[RAM: 111.65 MB] [ DEBUG ] [Shard #0] READY 1
+[RAM: 111.88 MB] [ DEBUG ] [Shard #0] GUILD_CREATE 2
+[RAM: 112.26 MB] [ DEBUG ] [Shard #0] GUILD_CREATE 3
+[RAM: 112.69 MB] [ DEBUG ] [Shard #0] GUILD_CREATE 4
+[RAM: 113.04 MB] [ DEBUG ] [Shard #0] GUILD_CREATE 5
+[RAM: 113.54 MB] [ DEBUG ] [Shard #0] GUILD_CREATE 6
+[RAM: 113.74 MB] [ DEBUG ] [Shard #0] GUILD_CREATE 7
+[RAM: 114.05 MB] [ DEBUG ] [Shard #0] GUILD_CREATE 8
+[RAM: 114.51 MB] [ INFO ] Shard #0 update presence
+[RAM: 114.52 MB] [ INFO ] [Shard #0] Sending: PresenceUpdate {
+ "activities": [
+  {
+   "name": "Hello world!",
+   "type": 4,
+   "state": "Hello world!"
+  }
+ ],
+ "since": 1726003740323,
+ "status": "dnd",
+ "afk": false
+}
+[RAM: 114.54 MB] [ DEBUG ] Processing queue. Remaining: 115 Length: 1

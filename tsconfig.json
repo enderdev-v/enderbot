@@ -1,0 +1,55 @@
+{
+	"compilerOptions": {
+        // LIB
+		"target": "ESNext",
+		"lib": [
+			"ESNext"
+		],
+		"experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "module": "NodeNext",
+		"moduleResolution": "NodeNext",
+
+        // Another config
+
+		"removeComments": true,
+		"noEmitOnError": true,
+		"allowSyntheticDefaultImports": true,
+		"noImplicitOverride": true,
+        "esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noFallthroughCasesInSwitch": true,
+		"skipDefaultLibCheck": true,
+		"skipLibCheck": true,
+        "noImplicitAny": false,
+        "resolveJsonModule": true,
+
+        // Path Config
+
+		"outDir": "./dist",
+		"baseUrl": "./",
+		"rootDir": "./src",
+		"paths": {
+			"#enderbot/types": ["./src/enderbot.ts"],
+			"#enderbot/client": ["./src/structures/Client.ts"],
+			"#enderbot/errors": ["./src/structures/classes/Errors.ts"],
+			"#enderbot/functions": ["./src/structures/utils/functions.ts"],
+			"#enderbot/utils/*": ["./src/structures/utils/*"],
+			"#enderbot/classes/*": ["./src/structures/classes/*"],
+            "#enderbot/Schemas/*": ["./src/Schemas/*"]
+		}
+	},
+	"include": [
+		"./src/**/*",
+	],
+	"exclude": [
+		"node_modules",
+		"package-lock.json",
+		"pnpm-lock.yaml",
+		".gitignore",
+        "dist"
+	],
+}

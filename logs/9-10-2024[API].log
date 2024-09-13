@@ -1,0 +1,4 @@
+[RAM: 110.92 MB] [ DEBUG ] Sending, Method: GET | Url: [/gateway/bot](/gateway/bot) | Auth: true
+[RAM: 112.89 MB] [ DEBUG ] Received response: OK(200)
+[RAM: 117.86 MB] [ DEBUG ] Sending, Method: PUT | Url: [/applications/862905211001503774/commands](/applications/:id/commands) | Auth: true
+[RAM: 111.32 MB] [ DEBUG ] Received response: OK(200)
