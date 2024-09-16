@@ -5,7 +5,7 @@ export default createEvent({
   data: { once: true, name: "botReady" },
   async run(user, client, shard) {
     void client.gateway.setPresence({
-      activities: [{ name: 'Viendo videos de ender', type: ActivityType.Custom, state: "Hello world!" }],
+      activities: [{ name: 'enderbot', type: ActivityType.Custom, state: "Hola soy enderbot" }],
       since: Date.now(),
       status: PresenceUpdateStatus.DoNotDisturb,
       afk: false

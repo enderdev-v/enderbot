@@ -39,6 +39,6 @@ export default class AvatarCommand extends Command {
             .setImage(user.avatarURL({ size: 1024, forceStatic: true, extension: `png` }))
             .setColor(ctx.client.config.enderbotColor);
 
-        ctx.write({ embeds: [embed] });
+        ctx.write({ embeds: [embed], allowed_mentions: { replied_user: false } });
     }
 }
