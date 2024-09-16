@@ -1,6 +1,7 @@
 import { Command, CommandContext, createStringOption, Declare, IgnoreCommand, Options } from "seyfert";
 import { Watch, Yuna } from "yunaforseyfert";
 import ms from "ms"
+import { MessageFlags } from "seyfert/lib/types/index.js";
 
 const options = {
     text: createStringOption({
@@ -33,7 +34,14 @@ export default class SayCommand extends Command {
 		if (texto.includes('@everyone') || texto.includes('@here')) {
 			return ctx.write({ content: 'everyone Bv'});
 		}
-		
-        ctx.write({ content: texto })
+        if (ctx.interaction === undefined){
+
+            await ctx.message?.delete("say xd")
+            return ctx.write({ content: texto })
+        } 
+		await ctx.client.messages.write(ctx.channelId, {
+            content: texto,
+        });
+        ctx.write({ content: "Se envio el texto", flags: MessageFlags.Ephemeral })
     }
 }

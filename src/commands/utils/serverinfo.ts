@@ -4,6 +4,7 @@ import { Declare, Embed, } from "seyfert";
 import { CommandContext, Command } from "seyfert"
 import ms from "ms";
 import { Watch, Yuna } from "yunaforseyfert";
+import { MessageFlags } from "seyfert/lib/types/index.js";
 
 @Declare({
   name: 'serverinfo',
@@ -63,7 +64,7 @@ export default class ServerinfoCommand extends Command {
                 }
             );
 
-        ctx.write({ embeds: [embed] });
+        ctx.write({ embeds: [embed], flags: MessageFlags.Ephemeral });
   
   
   }

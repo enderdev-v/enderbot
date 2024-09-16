@@ -1,7 +1,11 @@
 import { createEvent } from "seyfert";
 export default createEvent({
-    data: { once: true, name: "messageCreate" },
+    data: { name: "messageCreate" },
     async run(message) {
+
+        if (message.author.bot) return;
+
+        
         if (message.content.includes(("hola").toLowerCase()) || message.content.includes(("ola").toLowerCase())) {
             message.reply({ content: `hola ${message.author} musho gusto` });
         }
