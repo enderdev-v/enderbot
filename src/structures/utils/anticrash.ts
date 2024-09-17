@@ -3,20 +3,7 @@ import chalk from "chalk";
 import { client } from "../../index.js";
 import { inspect } from "node:util";
 import { WebhookClient, EmbedBuilder } from "discord.js";
-
-function MemoryUsage() {
-    const memory: NodeJS.MemoryUsage = process.memoryUsage();
-    const gigaBytes = memory.rss / 1024 ** 3;
-    if (gigaBytes >= 1) return chalk.bold(`[RAM: ${gigaBytes.toFixed(3)} GB]`);
-
-    const megaBytes = memory.rss / 1024 ** 2;
-    if (megaBytes >= 1) return chalk.bold(`[RAM: ${megaBytes.toFixed(2)} MB]`);
-
-    const kiloBytes = memory.rss / 1024;
-    if (kiloBytes >= 1) return chalk.bold(`[RAM: ${kiloBytes.toFixed(2)} KB]`);
-
-    return chalk.bold(`[RAM: ${memory.rss.toFixed(2)} B]`);
-}
+import { memoryUsage } from "./functions.js";
 
 const webhookUrl = "https://discord.com/api/webhooks/1282858862252392570/TIXXaKPW5xZb_ftkMogB1zsFtcv2NWB78p2YSES7SmC0J4DuCuFMwHX0m6pQI4muWbtw";
 if (!webhookUrl) {
@@ -93,4 +80,4 @@ process.on("warning", (warn) => {
 });
 
 process.on("multipleResolved", () => { });
-console.log(MemoryUsage(), chalk.bold.hex(LoggerColor.checkLogger)("[ CHECK ]") + " " + "Anticrash cargado");
+console.log(memoryUsage(), chalk.bold.hex(LoggerColor.checkLogger)("[ CHECK ]") + " " + "Anticrash cargado");

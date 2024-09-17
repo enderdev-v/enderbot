@@ -2,7 +2,8 @@ import { Declare, Command, type CommandContext } from 'seyfert';
 
 @Declare({
     name: 'random',
-    description: 'generates random numbers 1-20'
+    description: 'generates random numbers 1-20',
+    integrationTypes: ["GuildInstall", "UserInstall"]
 })
 export default class PingCommand extends Command {
 

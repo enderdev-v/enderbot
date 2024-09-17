@@ -15,5 +15,6 @@ const seyfert = config.bot({
         commands: "commands",
         events: "events",
     }, 
+    applicationId: "862905211001503774"
  });
 export default seyfert

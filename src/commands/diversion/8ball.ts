@@ -18,7 +18,7 @@ const options = {
 @Declare({
     name: "8ball",
     description: "Prueba tu suerte",
-    integrationTypes: ["GuildInstall"]
+    integrationTypes: ["GuildInstall", "UserInstall"]
 })
 @Options(options)
 export default class BallCommand extends Command {
@@ -35,7 +35,6 @@ export default class BallCommand extends Command {
     override async run(ctx: CommandContext<typeof options>) {
         const question = ctx.options.question;
         if (!question) return ctx.write({ content: "preguntame algo 🎱" });
-
         const Ball = [`si`, `no`, `quiziera comprobarlo`, `por supuesto`, `claro que no`, `muy cierto`, `que dijiste`, `claro que si`];
         const Aleatorio = Math.floor(Math.random() * (Ball.length));
 

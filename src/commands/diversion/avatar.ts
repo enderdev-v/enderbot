@@ -18,7 +18,7 @@ const options = {
 @Declare({
     name: "avatar",
     description: "obtener el avatar de un usuario",
-    integrationTypes: ["GuildInstall"]
+    integrationTypes: ["GuildInstall", "UserInstall"]
 })
 @Options(options)
 export default class AvatarCommand extends Command {

@@ -8,7 +8,7 @@ import { MessageFlags } from "seyfert/lib/types/index.js";
 
 @Declare({
   name: 'serverinfo',
-  description: 'Displays information about the server' 
+  description: 'Displays information about the server',
 })
 export default class ServerinfoCommand extends Command {
 
