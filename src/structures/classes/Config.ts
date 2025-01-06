@@ -12,6 +12,6 @@ export class enderbotConfig implements enderbotConfigType {
 	ownersId = [
 		'780277567537414165' // <- endercrack/enderdev-v
 	];
-	prefix = ['e!', "e?"];
+	prefix = ["ik!"];
 
 }

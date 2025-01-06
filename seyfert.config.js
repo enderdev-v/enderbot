@@ -4,17 +4,18 @@ import dotenv from "dotenv"
 dotenv.config()
 
 const token = process.env.token;
-if (!token) throw new Error("Pasado de lanza pon token")
+const applicationId = process.env.appID;
+if (!token) throw new Error("No pusiste el token")
+if (!token) throw new Error("No pusiste la application id")
     
 const seyfert = config.bot({
     token: token,
     intents: ["Guilds", 'MessageContent', 'GuildMessages', 'GuildMembers', 'GuildWebhooks'],
     locations: {
         base: "src",
-        output: "src", // No touch
         commands: "commands",
         events: "events",
     }, 
-    applicationId: "862905211001503774"
+    applicationId: applicationId
  });
 export default seyfert

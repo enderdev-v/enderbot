@@ -1,4 +1,6 @@
 import chalk from "chalk";
+import { UsingClient } from "seyfert";
+import { ActivityType, PresenceUpdateStatus } from "seyfert/lib/types/index.js";
 
 export function memoryUsage() {
     const memory: NodeJS.MemoryUsage = process.memoryUsage();
@@ -13,3 +15,22 @@ export function memoryUsage() {
 
     return chalk.bold(`[RAM: ${memory.rss.toFixed(2)} B]`);
 }
+
+export const setActivity = (client: UsingClient, type: ActivityType | any, name: string, message?: string) => {
+    void client.gateway.setPresence({
+      activities: [{ name: name, type: type, state: message }],
+      since: Date.now(),
+      status: PresenceUpdateStatus.DoNotDisturb,
+      afk: false
+    });
+};
+
+export const snap = (items: string[], m: string) => {
+    const d = m.toLowerCase();
+    const result = items.filter(item => {
+        if (!d.startsWith(item[0])) return;
+        return d.split("").every(element => item.includes(element));
+    });
+
+    return result;
+};
