@@ -4,6 +4,13 @@
 
 > **enderbot.ts**
 
+***Disclaimer***
+
+Al parecer hubo unos chistositos intentando hacer spam de su server y no les salio el webhook lo deje ahi por que sabia que iba a pasar pero no afectaba mucho asi que todo bien pero si quieren que les promocione su server solo diganmelo :v 
+
+el webhook ya no esta en funcionamiento por si lo quieren reguir intentando
+
+
 Aqui se pone los tipos, interfaces o declare necesarios del bot
 ejemplo:
 

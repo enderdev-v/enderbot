@@ -5,7 +5,7 @@ import { inspect } from "node:util";
 import { WebhookClient, EmbedBuilder } from "discord.js";
 import { memoryUsage } from "./functions.js";
 
-const webhookUrl = "https://discord.com/api/webhooks/1282858862252392570/TIXXaKPW5xZb_ftkMogB1zsFtcv2NWB78p2YSES7SmC0J4DuCuFMwHX0m6pQI4muWbtw";
+const webhookUrl = process.env.webhookURL;
 if (!webhookUrl) {
     throw new Error("Webhook URL is required.");
 }
