@@ -13,10 +13,11 @@ export default createEvent({
         });
         const guild = await client.guilds.fetch(ch.guildId as string);
 
-        const response = await fetch(`/guilds/${ch.guildId }/audit-logs`, {
+        const baseURL = 'https://discord.com/api/v10';
+        const response = await fetch(`${baseURL}/guilds/${ch.guildId}/audit-logs`, {
             method: 'GET', 
             headers: {
-                Authorization: `Bot ${process.env.token}`, // Token de autenticación del bot
+                Authorization: `Bot ${process.env.token}`, 
                 'Content-Type': 'application/json'
             },
         });

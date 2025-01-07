@@ -12,8 +12,9 @@ export default createEvent({
             content: `canal ${ch.name} ha sido creado`,
         });
         const guild = await client.guilds.fetch(ch.guildId as string);
+        const baseURL = 'https://discord.com/api/v10';
 
-        const response = await fetch(`/guilds/${ch.guildId }/audit-logs`, {
+        const response = await fetch(`${baseURL}/guilds/${ch.guildId }/audit-logs`, {
             method: 'GET', 
             headers: {
                 Authorization: `Bot ${process.env.token}`, // Token de autenticación del bot
