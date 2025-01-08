@@ -10,9 +10,7 @@ Al parecer hubo unos chistositos intentando hacer spam de su server y no les sal
 el webhook ya no esta en funcionamiento por si lo quieren reguir intentando
 ```
 
-Aca esta la invite del bot (solo lo pongo por que ta chido y unos lo pidieron)
-
-[enderbot](https://discord.com/oauth2/authorize?client_id=862905211001503774&integration_type=1&scope=applications.commands)
+Ya que lo haga multiguild Lo hare publico de momento es "priv" Por el tema de lo que da ahi de antiraid xd
 
 ## Poner en local el bot
 
