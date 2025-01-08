@@ -3,8 +3,17 @@ export default createEvent({
     data: { name: "messageCreate" },
     async run(message, client) {
         // anti spam
-        const users = ['955175950314799254', '780277567537414165', '862905211001503774', '282286160494067712'];
-		const channels = ['954735265988104193', '901239098025574400', '1112920459562995782'];
+        const users = [
+			"924525977437077515", // -> enderdev
+			"282286160494067712", // -> PingCord
+			"1085016217456222279", // -> Themurft
+			"1270550846538780692", // -> TheMurft Bot
+		];
+		const channels = [
+			"1216084854442295480", // -> Alliance enderdev
+			"1271300670397616219", // -> ALliance dreamy pallace
+			"1324784504258302099", // -> Alliance Cazadores de simps
+		];
 		try {
 			if (users.includes(message.author.id)) return;
 			if (channels.includes(message.channelId)) return;
