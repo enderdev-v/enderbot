@@ -19,10 +19,11 @@ const options = {
     name: "clear",
     description: "Borrar mensajes",
     defaultMemberPermissions: ["ModerateMembers"],
+    botPermissions: ["ModerateMembers"],
     integrationTypes: ["GuildInstall"]
 })
 @Options(options)
-export default class HelpCommand extends Command {
+export default class ClearCommand extends Command {
     @Watch({
         idle: ms("1min"),
         beforeCreate(ctx) {
@@ -34,29 +35,21 @@ export default class HelpCommand extends Command {
 
     })
     override async run(ctx: CommandContext<typeof options>) {
-        const cantidad = ctx.options.cantidad
-        const id = ctx.channelId;
-        const guild = await ctx.guild()
-        const channel = await guild?.channels.fetch(id)
-        if (!(channel instanceof TextGuildChannel)) return;
-
         try {
+            const cantidad = ctx.options.cantidad
+            const id = ctx.channelId;
+            const guild = await ctx.guild()
+            const channel = await guild?.channels.fetch(id)
+            if (!(channel instanceof TextGuildChannel)) return;
 
-
-            for (let i = 0; i <= cantidad; i++) {
-                const messageId = await channel.lastMessageId as string
-                const message = await channel.messages.fetch(messageId)
-                const days = Date.now() - (message.createdAt.getTime() / (1000 * 60 * 60 * 24))
-
-                if (days > 14) return ctx.write({ content: "message Deletes :D" })
-
-                channel.messages.delete(messageId, "bulk Delete")
-
-            }
-
-            ctx.write({ content: "message Deletes :D" })
-
-            console.log('Mensajes eliminados correctamente.');
+            if (cantidad > 99) return ctx.write({ content: "Cantidad excedida intente otra (no hay sistema pa' eso)" })
+            const msglist = await channel.messages.list({
+                before: ctx.message?.id || channel.lastMessageId as string,
+                limit: cantidad
+            })
+            const msgIds = msglist.map(msg => msg.id)
+            channel.messages.purge(msgIds, "Bulk Delete ")
+            ctx.write({ content: "Mensajes borrados correctamente" })
         } catch (error) {
             console.error('Error al eliminar los mensajes:', error);
         }

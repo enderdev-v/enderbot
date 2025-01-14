@@ -15,7 +15,9 @@ const options = {
 @Declare({
   name: 'kick',
   description: 'Saca a un usuario', 
-  integrationTypes: ["GuildInstall"]
+  integrationTypes: ["GuildInstall"],
+  defaultMemberPermissions: ["KickMembers"],
+    botPermissions: ["KickMembers"]
 })
 
 @Options(options)
@@ -37,7 +39,7 @@ export default class KickCommand extends Command {
     
 
     if (user.id === ctx.author.id) return ctx.write({ content: "no te puedes auto aislar" });
-    const member = await ctx.guild()?.members.fetch(user.id)
+    const member = await (await ctx.guild())?.members.fetch(user.id)
 
     try {
       member?.kick(reason)

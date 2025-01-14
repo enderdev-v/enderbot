@@ -44,7 +44,7 @@ export default class MuteCommand extends Command {
         const user = ctx.options.user;
         let tiempo = ctx.options.time || "2m";
         const muteReason = ctx.options.reason || "undefined <:globo:1222262926694416485>";
-        const member = await ctx.guild()?.members.fetch(user.id)
+        const member = await (await ctx.guild())?.members.fetch(user.id)
         const regex = /\d+[smhdw]/;
         const time = ms(tiempo);
         if (!regex.test(tiempo)) return console.log("No funco")

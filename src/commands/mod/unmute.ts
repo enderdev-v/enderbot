@@ -19,6 +19,7 @@ const options = {
     name: "unmute",
     description: "Desmutear a un usuario",
     defaultMemberPermissions: ["ModerateMembers"],
+    botPermissions: ["ModerateMembers"],
     integrationTypes: ["GuildInstall"]
 })
 @Options(options)
@@ -35,7 +36,7 @@ export default class UnmuteCommand extends Command {
     })
     override async run(ctx: CommandContext<typeof options>) {
         const user = ctx.options.user;
-        const member = await ctx.guild()?.members.fetch(user.id)
+        const member = await (await ctx.guild())?.members.fetch(user.id)
         
 
         

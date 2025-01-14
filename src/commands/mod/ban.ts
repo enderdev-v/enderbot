@@ -47,13 +47,15 @@ export default class BanCommand extends Command {
     const time = ms(tiempo)
 
     if (user.id === ctx.author.id) return ctx.write({ content: "no te puedes auto aislar" });
-    const member = await ctx.guild()?.members.fetch(user.id)
+    const member = await (await ctx.guild())?.members.fetch(user.id)
 
     try {
       member?.ban({ delete_message_seconds: 3000 }, reason)
-      setTimeout(async () => {
-        (await ctx.guild()?.members)?.unban(user.id)
-      }, time)
+      if (time !== "perma") {
+        setTimeout(async () => {
+          (await (await ctx.guild())?.members)?.unban(user.id)
+        }, time)
+      }
     } catch (e) {
       console.error(e);
     }

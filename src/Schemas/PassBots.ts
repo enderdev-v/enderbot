@@ -1,6 +1,6 @@
 import { Document, Schema, model } from 'mongoose';
 
-const BadBots = new Schema({
+const PassBots = new Schema({
 	guild: {
 		type: String,
 		required: true
@@ -12,9 +12,9 @@ const BadBots = new Schema({
 	}
 });
 
-interface IBots extends Document {
+interface IPassBots extends Document {
   guild: string;
   bots: string[];
 }
 
-export default model<IBots>('BadBotsSchema', BadBots);
+export default model<IPassBots>('PassBotaSchema', PassBots);

@@ -1,14 +1,18 @@
 import BadBots from "#enderbot/Schemas/BadBots.js";
 import { createEvent, TextGuildChannel } from "seyfert";
 import { APIAuditLog, APIAuditLogEntry, AuditLogEvent, } from 'discord-api-types/v10';
-import { bots } from "#enderbot/utils/Constants.js";
+import LogsSchema from "#enderbot/Schemas/LogsSchema.js";
+import PassBots from "#enderbot/Schemas/PassBots.js";
 
 export default createEvent({
     data: { name: "channelCreate" },
     async run(ch, client) {
         if (!(ch instanceof TextGuildChannel)) return;
+        const LogsData = await LogsSchema.findOne({ guild: ch.guildId })
 
-        await client.messages.write('1282831194664341589', {
+        if (!LogsData) return;
+
+        await client.messages.write(LogsData.channelId, {
             content: `canal ${ch.name} ha sido creado`,
         });
         const guild = await client.guilds.fetch(ch.guildId as string);
@@ -40,15 +44,20 @@ export default createEvent({
             return Number(diff);
         })[0];
 
-        const executor = ultimoLog.user_id as string;  
+        const bypassed = await PassBots.findOne({ guild: ch.guildId })
 
-        if (bots.includes(executor)) return;
+        
+
+        const executor = ultimoLog.user_id as string;  
+        if (bypassed) {
+            if (bypassed?.bots.includes(executor) || executor === client.botId) return;
+        }
 
        guild.members.ban(executor, { delete_message_seconds: 1000 }, "Intento de Raid!" ).catch(err => {
         client.logger.error(err);
        })
-
-     
+        
+        
         const data = await BadBots.findOne({ guild: ch.guildId });
         if (!data) {
             const newdata = new BadBots({
@@ -65,6 +74,6 @@ export default createEvent({
                 }
             }
         );
-
+        
     }
 })

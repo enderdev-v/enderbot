@@ -59,7 +59,7 @@ export default class UserinfoCommand extends Command {
             .setImage("attachment://userimage.png");
 
         try {
-            const member = await ctx.guild()?.members.fetch(user.id)
+            const member = await (await ctx.guild())?.members.fetch(user.id)
             
             const roles = (await member?.roles.list())?.sort((a, b) => b.position - a.position).map(roles => roles.toString()).slice(0, -1) as string[];
             if (!roles) return ctx.write({ embeds: [embed.addFields(userinfoArr)], files: [attachment], flags: MessageFlags.Ephemeral });

@@ -1,7 +1,7 @@
 import BadBots from "#enderbot/Schemas/BadBots.js";
 import { createEvent, TextGuildChannel } from "seyfert";
 import { APIAuditLog, APIAuditLogEntry, AuditLogEvent, } from 'discord-api-types/v10';
-import { bots } from "#enderbot/utils/Constants.js";
+import PassBots from "#enderbot/Schemas/PassBots.js";
 
 export default createEvent({
     data: { name: "channelDelete" },
@@ -15,14 +15,14 @@ export default createEvent({
 
         const baseURL = 'https://discord.com/api/v10';
         const response = await fetch(`${baseURL}/guilds/${ch.guildId}/audit-logs`, {
-            method: 'GET', 
+            method: 'GET',
             headers: {
-                Authorization: `Bot ${process.env.token}`, 
+                Authorization: `Bot ${process.env.token}`,
                 'Content-Type': 'application/json'
             },
         });
 
-       
+
         if (!response.ok) {
             throw new Error(`Error al obtener los logs: ${response.statusText}`);
         }
@@ -40,15 +40,17 @@ export default createEvent({
             return Number(diff);
         })[0];
 
-        const executor = ultimoLog.user_id as string;  
+        const executor = ultimoLog.user_id as string;
+        const bypassed = await PassBots.findOne({ guild: ch.guildId })
 
-        if (bots.includes(executor)) return;
+        if (bypassed) {
+            if (bypassed?.bots.includes(executor) || executor === client.botId) return;
+        }
+        guild.members.ban(executor, { delete_message_seconds: 1000 }, "Intento de Raid!").catch(err => {
+            client.logger.error(err);
+        })
 
-       guild.members.ban(executor, { delete_message_seconds: 1000 }, "Intento de Raid!" ).catch(err => {
-        client.logger.error(err);
-       })
 
-     
         const data = await BadBots.findOne({ guild: ch.guildId });
         if (!data) {
             const newdata = new BadBots({

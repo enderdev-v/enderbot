@@ -1,20 +1,20 @@
 import { Document, Schema, model } from 'mongoose';
 
-const BadBots = new Schema({
+const PassUsers = new Schema({
 	guild: {
 		type: String,
 		required: true
 	},
-	bots: {
+	users: {
 		type: Array,
 		required: true,
 		default: []
 	}
 });
 
-interface IBots extends Document {
+interface IPassUsers extends Document {
   guild: string;
-  bots: string[];
+  users: string[];
 }
 
-export default model<IBots>('BadBotsSchema', BadBots);
+export default model<IPassUsers>('PassUsersSchema', PassUsers);
