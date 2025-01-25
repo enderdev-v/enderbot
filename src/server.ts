@@ -7,7 +7,6 @@ app.get('/', (_req, res) => {
     res.send('<h1>endkachu nice<h1> <br />');
 	res.send('Hola Mundo!');
 });
-
 app.listen(port as number, '0.0.0.0', () => {
 	console.log(`Example app listening on port ${port}`);
 });

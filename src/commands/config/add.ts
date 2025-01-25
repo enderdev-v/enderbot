@@ -1,5 +1,4 @@
 import { Declare, Command, Options, IgnoreCommand } from "seyfert";
-import { BadBotsSubCommand } from "./badbots.command.js";
 import { PassbotsSubCommand } from "./passbots.command.js";
 
 @Declare({
@@ -8,5 +7,5 @@ import { PassbotsSubCommand } from "./passbots.command.js";
   ignore: IgnoreCommand.Message
 })
 // Being in the same folder with @AutoLoad() you can save this step
-@Options([BadBotsSubCommand, PassbotsSubCommand])
+@Options([ PassbotsSubCommand])
 export default class AddCommand extends Command {}

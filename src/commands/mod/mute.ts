@@ -26,7 +26,8 @@ const options = {
 @Declare({
     name: "timeout",
     description: "timeout user",
-    defaultMemberPermissions: ["ModerateMembers"]
+    defaultMemberPermissions: ["ModerateMembers"],
+    botPermissions: ["ModerateMembers"]
 })
 @Options(options)
 export default class MuteCommand extends Command {
