@@ -5,6 +5,7 @@ import {
     Declare,
     Command,
     Options,
+    Middlewares,
 } from "seyfert";
 import { Watch, Yuna } from "yunaforseyfert";
 
@@ -23,6 +24,7 @@ const options = {
     integrationTypes: ["GuildInstall"]
 })
 @Options(options)
+@Middlewares(["CheckBots"])
 export default class UnmuteCommand extends Command {
     @Watch({
         idle: ms("1min"),

@@ -1,4 +1,4 @@
-import { Command, CommandContext, createStringOption, Declare, IgnoreCommand, Options } from "seyfert";
+import { Command, CommandContext, createStringOption, Declare, IgnoreCommand, Middlewares, Options } from "seyfert";
 import { Watch, Yuna } from "yunaforseyfert";
 import ms from "ms"
 import { MessageFlags } from "seyfert/lib/types/index.js";
@@ -16,6 +16,7 @@ const options = {
     ignore: IgnoreCommand.Slash
 })
 @Options(options)
+@Middlewares(["CheckBots"])
 export default class SayCommand extends Command {
     @Watch({
         idle: ms("1min"),

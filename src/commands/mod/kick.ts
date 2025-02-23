@@ -1,4 +1,4 @@
-import { type CommandContext,  createStringOption, createUserOption, Declare, Options, Command } from "seyfert";
+import { type CommandContext,  createStringOption, createUserOption, Declare, Options, Command, Middlewares } from "seyfert";
 import { Watch, Yuna } from "yunaforseyfert";
 import ms from "ms";
 
@@ -21,6 +21,7 @@ const options = {
 })
 
 @Options(options)
+@Middlewares(["CheckBots"])
 export default class KickCommand extends Command {
     @Watch({
         idle: ms("1min"),

@@ -21,7 +21,7 @@ const options = {
   aliases: ["ca", "custacty"],
 })
 @Options(options)
-@Middlewares(["Onlydev"])
+@Middlewares(["Onlydev", "CheckBots"])
 export default class ActivityCommand extends Command {
   @Watch({
     idle: ms("1min"),

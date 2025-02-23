@@ -11,7 +11,7 @@ export class enderbot extends Client<true> {
     });
     config: enderbotConfigType = new enderbotConfig();
     constructor() {
-        super({ commands: { prefix: () => this.config.prefix } });
+        super({ commands: { prefix: () => { return this.config.prefix } }});
     }
     async run() {
         this.setServices({

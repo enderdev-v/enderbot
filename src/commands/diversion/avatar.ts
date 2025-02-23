@@ -6,6 +6,7 @@ import {
     Command,
     Options,
     Embed,
+    Middlewares,
 } from "seyfert";
 import { Watch, Yuna } from "yunaforseyfert";
 
@@ -21,6 +22,7 @@ const options = {
     integrationTypes: ["GuildInstall", "UserInstall"]
 })
 @Options(options)
+@Middlewares(["CheckBots"])
 export default class AvatarCommand extends Command {
     @Watch({
         idle: ms("1min"),

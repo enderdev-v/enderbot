@@ -1,15 +1,9 @@
-import PassChannels from "#enderbot/Schemas/PassChannels.js";
-import PassUsers from "#enderbot/Schemas/PassUsers.js";
 import { createEvent } from "seyfert";
 export default createEvent({
     data: { name: "messageCreate" },
     async run(message, client) {
-        // anti spam
-        const Bypass = await PassUsers.findOne({ guild: message.guildId })
-        const Bypassed = await PassChannels.findOne({ guild: message.guildId })
 		try {
-			if (Bypass?.users.includes(message.author.id)) return;
-			if (Bypassed?.channels.includes(message.channelId)) return;
+			if(message.author.username === "endercrack") return;
 			const link = /(https?:\/\/)?(www\.)?(discord\.(gg|io|me|li)|discordapp\.com\/invite)\/.+[a-z]/g;
 			
 			if (link.test(message.content)) {

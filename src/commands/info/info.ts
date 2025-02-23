@@ -1,10 +1,11 @@
-import { Declare, Command, type CommandContext, Embed } from 'seyfert';
+import { Declare, Command, type CommandContext, Embed, Middlewares } from 'seyfert';
 
 @Declare({
     name: 'info',
     description: 'Informacion sobre mi',
     integrationTypes: ["GuildInstall"]
 })
+@Middlewares(["CheckBots"])
 export default class InfoCommand extends Command {
 
     override async run(ctx: CommandContext) {

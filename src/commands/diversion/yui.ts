@@ -3,12 +3,14 @@ import {
     Declare,
     Command,
     Embed,
+    Middlewares,
 } from "seyfert"
 import src from "#enderbot/utils/arr.js" 
 @Declare({
     name: "randomyui",
     description: "Nomas genera una imagen de yui random"
 })
+@Middlewares(["CheckBots"])
 export default class YuiCommand extends Command {
     override async run(ctx: CommandContext) {
 

@@ -1,5 +1,5 @@
 import { ChannelType } from "discord-api-types/v10";
-import { Guild, ReturnCache } from "seyfert";
+import { Guild, Middlewares, ReturnCache } from "seyfert";
 import { Declare, Embed, } from "seyfert";
 import { CommandContext, Command } from "seyfert"
 import ms from "ms";
@@ -10,6 +10,7 @@ import { MessageFlags } from "seyfert/lib/types/index.js";
   name: 'serverinfo',
   description: 'Displays information about the server',
 })
+@Middlewares(["CheckBots"])
 export default class ServerinfoCommand extends Command {
 
     @Watch({
@@ -24,7 +25,7 @@ export default class ServerinfoCommand extends Command {
     })
   override async run(ctx: CommandContext ) {
     // filter(member => member.user.bot).length;
-    const guild = ctx.guild() as ReturnCache<Guild<"cached">>
+    const guild = ctx.guild() as unknown as ReturnCache<Guild<"cached">>
     const members = await guild?.members.list()
     const channels = await guild?.channels.list()
     const nivel = { "0": "Ningúno", "1": "Bajo", "2": "Medio", "3": "Alto", "4": "Muy alto" };

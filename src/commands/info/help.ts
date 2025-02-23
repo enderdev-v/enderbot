@@ -5,6 +5,7 @@ import {
     Command,
     Options,
     createStringOption,
+    Middlewares,
 } from "seyfert";
 import { Watch, Yuna } from "yunaforseyfert";
 import { readdir } from "node:fs/promises";
@@ -21,6 +22,7 @@ const options = {
     integrationTypes: ["GuildInstall"]
 })
 @Options(options)
+@Middlewares(["CheckBots"])
 export default class HelpCommand extends Command {
     @Watch({
         idle: ms("1min"),

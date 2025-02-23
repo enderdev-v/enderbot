@@ -17,7 +17,7 @@ export const options = {
     integrationTypes: ["GuildInstall"]
 })
 @Options(options)
-@Middlewares(["Onlydev"])
+@Middlewares(["Onlydev", "CheckBots"])
 export default class SayCommand extends Command {
     @Watch({
         idle: ms("1min"),

@@ -1,4 +1,4 @@
-import { AttachmentBuilder, createUserOption, Declare, Embed, Options } from "seyfert";
+import { AttachmentBuilder, createUserOption, Declare, Embed, Middlewares, Options } from "seyfert";
 import { CommandContext, Command } from "seyfert"
 import ms from "ms";
 import { Watch, Yuna } from "yunaforseyfert";
@@ -17,6 +17,7 @@ const options = {
     integrationTypes: ["GuildInstall", "UserInstall"]
 })
 @Options(options)
+@Middlewares(["CheckBots"])
 export default class UserinfoCommand extends Command {
     @Watch({
         idle: ms("1min"),

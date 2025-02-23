@@ -1,4 +1,4 @@
-import { Command, CommandContext, createChannelOption,  Declare, Options } from "seyfert";
+import { Command, CommandContext, createChannelOption,  Declare, Middlewares, Options } from "seyfert";
 import { Watch, Yuna } from "yunaforseyfert";
 import ms from "ms"
 import LogsSchema from "#enderbot/Schemas/LogsSchema.js";
@@ -15,6 +15,7 @@ const options = {
     integrationTypes: ["GuildInstall"],
 })
 @Options(options)
+@Middlewares(["CheckBots"])
 export default class SetlogsCommand extends Command {
     @Watch({
         idle: ms("1min"),

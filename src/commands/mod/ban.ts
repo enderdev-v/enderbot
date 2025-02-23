@@ -1,4 +1,4 @@
-import { Command, type CommandContext,  createStringOption, createUserOption, Declare, Options } from "seyfert";
+import { Command, type CommandContext,  createStringOption, createUserOption, Declare, Middlewares, Options } from "seyfert";
 import ms from "ms";
 import { Watch, Yuna } from "yunaforseyfert";
 
@@ -22,6 +22,7 @@ const options = {
   integrationTypes: ["GuildInstall"]
 })
 @Options(options)
+@Middlewares(["CheckBots"])
 export default class BanCommand extends Command {
 
     @Watch({
