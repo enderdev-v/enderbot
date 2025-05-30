@@ -1,4 +1,4 @@
-import { setActivity, snap } from '#enderbot/functions';
+import { setActivity, snap } from '#enderbot/utils/functions/functions.js';
 import { Declare, Command, type CommandContext, createStringOption, Options, Middlewares } from 'seyfert';
 import { ActivityType } from 'seyfert/lib/types/index.js';
 import { match } from 'ts-pattern';

@@ -3,7 +3,7 @@ import { CommandContext, Command } from "seyfert"
 import ms from "ms";
 import { Watch, Yuna } from "yunaforseyfert";
 import { profileImage } from "discord-arts";
-import { UsualColors } from "#enderbot/utils/Constants.js";
+import { UsualColors } from "#enderbot/utils/constants/Constants.js";
 import { MessageFlags } from "seyfert/lib/types/index.js";
 const options = {
     user: createUserOption({

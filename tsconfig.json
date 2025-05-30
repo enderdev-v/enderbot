@@ -36,7 +36,7 @@
 			"#enderbot/types": ["./src/enderbot.ts"],
 			"#enderbot/client": ["./src/structures/Client.ts"],
 			"#enderbot/errors": ["./src/structures/classes/Errors.ts"],
-			"#enderbot/functions": ["./src/structures/utils/functions.ts"],
+			"#enderbot/functions": ["src/structures/utils/functions/functions.ts"],
 			"#enderbot/utils/*": ["./src/structures/utils/*"],
 			"#enderbot/classes/*": ["./src/structures/classes/*"],
             "#enderbot/Schemas/*": ["./src/Schemas/*"]

@@ -5,7 +5,7 @@ import {
     Embed,
     Middlewares,
 } from "seyfert"
-import src from "#enderbot/utils/arr.js" 
+import src from "#enderbot/utils/constants/arr.js" 
 @Declare({
     name: "randomyui",
     description: "Nomas genera una imagen de yui random"

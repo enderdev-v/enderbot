@@ -1,20 +1,17 @@
 import { LoggerColor } from "#enderbot/types";
 import chalk from "chalk";
-import { client } from "../../index.js";
 import { inspect } from "node:util";
-import { WebhookClient, EmbedBuilder } from "discord.js";
-import { memoryUsage } from "./functions.js";
+import { Embed } from "seyfert"
+import { memoryUsage } from "../functions/functions.js";
+import { client } from "../../../index.js"
 
-const webhookUrl = process.env.webhookURL;
-if (!webhookUrl) {
-    throw new Error("Webhook URL is required.");
-}
-const webhook = new WebhookClient({ url: webhookUrl });
-
+export const webhookId = process.env.webhookId as string;
+export const webhookToken = process.env.webhookToken as string;
 // unhandledRejection
 
+
 process.on("unhandledRejection", (e) => {
-    const embed = new EmbedBuilder()
+    const embed = new Embed()
         .setTitle("enderbot Rejection")
         .setColor(client.config.errorColor)
         .addFields(
@@ -23,32 +20,36 @@ process.on("unhandledRejection", (e) => {
         .setTimestamp();
 
     console.error(chalk.bold.red("[ AntiCrash System ]:"), e);
-    return webhook.send({ embeds: [embed] });
+    return client.webhooks.writeMessage(webhookId, webhookToken, {
+        body: { embeds: [embed] },
+    });
 });
 
 // uncaught exceptions
 
 process.on("uncaughtException", (e, origin) => {
 
-    const embed = new EmbedBuilder()
+    const embed = new Embed()
         .setTitle("enderbot error Exception/Catch")
         .setColor(client.config.errorColor)
-        .addFields(
+        .addFields([
             { name: "Error", value: `\`\`\`${inspect(e, { depth: 0 }).slice(0, 1000)}\`\`\`` },
             { name: "Origin", value: `\`\`\`${inspect(origin, { depth: 0 }).slice(0, 1000)}\`\`\`` }
-        )
+        ])
         .setTimestamp();
 
     console.error(chalk.bold.yellow("[ AntiCrash System ]:"));
     console.log(e, origin);
-    return webhook.send({ embeds: [embed] });
+    return client.webhooks.writeMessage(webhookId, webhookToken, {
+        body: { embeds: [embed] },
+    });
 });
 
 // uncaught exceptions monitor
 
 process.on("uncaughtExceptionMonitor", (e, origin) => {
 
-    const embed = new EmbedBuilder()
+    const embed = new Embed()
         .setTitle("error Exception Monitor")
         .setColor(client.config.errorColor)
         .setURL("https://nodejs.org/api/process.html#event-uncaughtexceptionmonitor")
@@ -61,11 +62,13 @@ process.on("uncaughtExceptionMonitor", (e, origin) => {
 
     console.error(chalk.bold.red("[ AntiCrash System ]:"));
     console.error(e, origin);
-    return webhook.send({ embeds: [embed] });
+    return client.webhooks.writeMessage(webhookId, webhookToken, {
+        body: { embeds: [embed] },
+    });
 });
 
 process.on("warning", (warn) => {
-    const embed = new EmbedBuilder()
+    const embed = new Embed()
         .setTitle("enderbot Exception Monitor Warn")
         .setColor(client.config.errorColor)
         .setURL("https://nodejs.org/api/process.html#event-warning")
@@ -76,7 +79,9 @@ process.on("warning", (warn) => {
 
     console.error(chalk.bold.yellow("[ AntiCrash WarnSystem ]:"));
     console.error(warn);
-    return webhook.send({ embeds: [embed] });
+    return client.webhooks.writeMessage(webhookId, webhookToken, {
+        body: { embeds: [embed] },
+    });
 });
 
 process.on("multipleResolved", () => { });

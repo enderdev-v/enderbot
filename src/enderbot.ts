@@ -1,5 +1,5 @@
 import { enderbot } from "#enderbot/client";
-import { middlewares } from "#enderbot/utils/Middlewares.js";
+import { middlewares } from "#enderbot/utils/utils/Middlewares.js";
 import { ParseClient, ParseMiddlewares } from "seyfert";
 
 // declare

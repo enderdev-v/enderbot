@@ -1,9 +1,9 @@
 import { Client } from "seyfert";
-import { enderbotConfig } from "./classes/Config.js";
+import { enderbotConfig } from "./classes/enderbot/Config.js";
 import { enderbotConfigType } from "#enderbot/types";
-import { enderbotHCmd } from "./classes/handleCmd.js";
+import { enderbotHCmd } from "./classes/enderbot/handleCmd.js";
 import { enderbotLogger } from "./classes/Logger.js";
-import { middlewares } from "./utils/Middlewares.js";
+import { middlewares } from "./utils/utils/Middlewares.js";
 
 export class enderbot extends Client<true> {
     override logger: enderbotLogger = new enderbotLogger({

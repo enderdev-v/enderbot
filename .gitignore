@@ -7,3 +7,4 @@ pnpm-lock.yaml
 tsconfig.tsbuildinfo
 eslint.config.mjs
 logs/
+generated/ 

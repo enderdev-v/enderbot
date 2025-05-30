@@ -3,8 +3,10 @@ declare global {
 		interface ProcessEnv {
 			token: string;
 			clientid: string;
-			mongo: string;
+			DATABASE_URL: string;
 			webhookURL: string;
+			webhookId: string;
+			webhookToken: string;
 		}
 	}
 }

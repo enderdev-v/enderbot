@@ -1,4 +1,4 @@
-import { memoryUsage } from '#enderbot/functions';
+import { memoryUsage } from '#enderbot/utils/functions/functions.js';
 import { LoggerColor, LoggerLevel } from '#enderbot/types';
 import chalk from 'chalk';
 import { Logger } from 'seyfert';
