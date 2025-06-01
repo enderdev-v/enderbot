@@ -14,3 +14,7 @@ Ahora si ya le añadi una mejor organizacion al proyecto (por lo menos en la par
 **No hay Necesidad de DJS**
 
 antes ocupaba djs para el envio de webhooks y el anticrash ahora no hace falta simplemente se usa puro seyfert
+
+**Nuevo Readme**
+
+Ahora cambie el readme para que este mas bonito

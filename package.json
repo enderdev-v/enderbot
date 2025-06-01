@@ -1,6 +1,6 @@
 {
   "name": "enderbot",
-  "version": "2.7.0",
+  "version": "2.8.0",
   "main": "./dist/index.js",
   "keywords": [],
   "author": "enderdev-v",
@@ -10,11 +10,16 @@
   "scripts": {
     "test": "tsc --traceResolution",
     "start": "tsx ./src/index.ts",
-    "generate": "prisma generate",
-    "push": "prisma db push",
+    "prisma:generate": "prisma generate",
+    "prisma:push": "prisma db push",
     "dev": "tsx watch ./src/index.ts",
     "build": "tsc",
     "watch": "tsc -w"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.14.0",
+    "npm": ">=10.0.0"
   },
   "devDependencies": {
     "@types/node": "22.5.1",

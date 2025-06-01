@@ -42,7 +42,7 @@ export default class ActivityCommand extends Command {
       console.log(type)
 
         const options = ["competing", "custom", "listening", "playing", "streaming", "watching"];
-        const result = match(String(snap(options, type)))
+        const result = match(String(snap(options, type))) // Esto lo planeo modificar xd
         .with("competing", () => ActivityType.Competing)
         .with("custom", () => ActivityType.Custom)
         .with("listening", () => ActivityType.Listening)
