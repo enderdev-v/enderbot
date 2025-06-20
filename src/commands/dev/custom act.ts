@@ -32,7 +32,7 @@ export default class ActivityCommand extends Command {
         watcher.stop("Just execute");
     }
 })
-  public override async run(ctx: CommandContext<typeof options>) {
+  override async run(ctx: CommandContext<typeof options>) {
     try {
       const type = ctx.options.type
       const name = ctx.options.name

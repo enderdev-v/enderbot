@@ -6,6 +6,7 @@ import { MessageFlags } from "seyfert/lib/types/index.js";
 const options = {
     text: createStringOption({
         description: "El texto que enderbot va a decir",
+        required: true
     }),
 };
 
@@ -28,9 +29,8 @@ export default class SayCommand extends Command {
         },
 
     })
-    public override async run(ctx: CommandContext<typeof options>) {
+    override async run(ctx: CommandContext<typeof options>) {
         const texto = ctx.options.text;
-        if (!texto) return ctx.write({ content: 'no hay texto'});
 
 		if (texto.includes('@everyone') || texto.includes('@here')) {
 			return ctx.write({ content: 'everyone Bv'});

@@ -56,7 +56,7 @@ export default class UserinfoCommand extends Command {
         const embed = new Embed()
             .setTitle(`informacion de ${user.username}`)
             .setThumbnail(user.avatarURL({ extension: `png` }))
-            .setColor(ctx.client.config.enderbotColor)
+            .setColor(ctx.client.config.colors.enderbotColor)
             .setImage("attachment://userimage.png");
 
         try {

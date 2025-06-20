@@ -8,7 +8,7 @@ import { Declare, Command, type CommandContext,  Middlewares, Embed } from 'seyf
 })
 @Middlewares(["Onlydev", "CheckBots"])
 export default class DevInfoCommand extends Command {
-  public override async run(ctx: CommandContext) {
+  override async run(ctx: CommandContext) {
     function memoryUsage() {
             const memory: NodeJS.MemoryUsage = process.memoryUsage();
             const gigaBytes = memory.rss / 1024 ** 3;
@@ -36,7 +36,7 @@ export default class DevInfoCommand extends Command {
         const embed = new Embed()
             .setTitle("***Informacion de enderbot***")
             .setThumbnail(ctx.client.me.avatarURL({ forceStatic: true }) as string)
-            .setColor(ctx.client.config.enderbotColor as number)
+            .setColor(ctx.client.config.colors.enderbotColor as number)
             .setDescription("***Hola dev que tal como estas aqui te doy un resumen para que no entres a otros lados :D***")
             .setFields([
                  {

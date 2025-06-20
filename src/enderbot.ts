@@ -2,6 +2,18 @@ import { enderbot } from "#enderbot/client";
 import { middlewares } from "#enderbot/utils/utils/Middlewares.js";
 import { ParseClient, ParseMiddlewares } from "seyfert";
 
+
+// Categories 
+
+export enum Categories { 
+	config = "config",
+	dev = "dev",
+	info = "info",
+	mod = "mod",
+	fun = "fun",
+	util = "util",
+	none = "none"
+}
 // declare
 
 declare module "seyfert" {
@@ -12,19 +24,26 @@ declare module "seyfert" {
 	// Registrar los middlewares en los tipos de Seyfert
 	interface RegisteredMiddlewares
 		extends ParseMiddlewares<typeof middlewares> { }
+	interface ExtraProps {
+		category?: Categories;
+		usage?: string;
+	}
 }
 
 // enderbot configuration
 
 export type enderbotConfigType = {
-	enderbotColor: number
-	errorColor: number
-	checkColor: number
-	debugColor: number
-	infoColor: number
+	colors: {
+		enderbotColor: number
+		errorColor: number
+		checkColor: number
+		debugColor: number
+		infoColor: number
+	}
 	devsId: string[]
 	ownersId: string[]
 	prefix: string[]
+	inviteLink: string
 }
 
 

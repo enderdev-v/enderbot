@@ -1,3 +1,4 @@
+import { Categories } from "#enderbot/types";
 import ms from "ms";
 import {
     type CommandContext,
@@ -19,7 +20,11 @@ const options = {
 @Declare({
     name: "8ball",
     description: "Prueba tu suerte",
-    integrationTypes: ["GuildInstall", "UserInstall"]
+    integrationTypes: ["GuildInstall", "UserInstall"],
+    props: {
+        usage: "e?8ball {pregunta}",
+        category: Categories.fun
+    }
 })
 @Options(options)
 @Middlewares(["CheckBots"])

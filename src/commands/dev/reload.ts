@@ -29,7 +29,7 @@ export default class SayCommand extends Command {
         },
 
     })
-    public override async run(ctx: CommandContext<typeof options>) {
+    override async run(ctx: CommandContext<typeof options>) {
         const option = ctx.options.option
         match(option.toLocaleLowerCase())
             .with("commands", () => {
@@ -39,9 +39,9 @@ export default class SayCommand extends Command {
             .with("events", () => ctx.client.events?.reloadAll())
             .with("reset", () => ctx.client.reload())
             .otherwise(() => ctx.write({ content: "debes escoger una opcion : commands, events" }))
-        ctx.write({ embeds: [{ title: `Recargando ${option}`, description: "<:dino_ryo:1325620344459104372> Recargando", color: ctx.client.config.enderbotColor }] }).then(async m => {
-            
-            (m as Message).edit({ embeds: [{ title: "Reload command", description: `<:dino_ryo:1325620344459104372> ${option}, Cargados`, color: ctx.client.config.enderbotColor }] });
+        ctx.write({ embeds: [{ title: `Recargando ${option}`, description: "<:dino_ryo:1325620344459104372> Recargando", color: ctx.client.config.colors.enderbotColor }] }).then(async m => {
+
+            (m as Message).edit({ embeds: [{ title: "Reload command", description: `<:dino_ryo:1325620344459104372> ${option}, Cargados`, color: ctx.client.config.colors.enderbotColor }] });
         });
     }
 }

@@ -39,7 +39,7 @@ export default class AvatarCommand extends Command {
         const embed = new Embed()
             .setTitle(`Avatar de **${user.username}**`)
             .setImage(user.avatarURL({ size: 1024, forceStatic: true, extension: `png` }))
-            .setColor(ctx.client.config.enderbotColor);
+            .setColor(ctx.client.config.colors.enderbotColor);
 
         ctx.write({ embeds: [embed], allowed_mentions: { replied_user: false } });
     }

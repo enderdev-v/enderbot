@@ -36,14 +36,16 @@
 			"#enderbot/types": ["./src/enderbot.ts"],
 			"#enderbot/client": ["./src/structures/Client.ts"],
 			"#enderbot/errors": ["./src/structures/classes/Errors.ts"],
-			"#enderbot/functions": ["src/structures/utils/functions/functions.ts"],
+			"#enderbot/functions/functions.js/*": ["src/structures/utils/functions/*"],
 			"#enderbot/utils/*": ["./src/structures/utils/*"],
 			"#enderbot/classes/*": ["./src/structures/classes/*"],
-            "#enderbot/Schemas/*": ["./src/Schemas/*"]
+            "#enderbot/Schemas/*": ["./src/Schemas/*"],
+			"#ryosaki/prisma": ["./generated/prisma"]
 		}
 	},
 	"include": [
 		"./src/**/*",
+		"env.d.ts"
 	],
 	"exclude": [
 		"node_modules",

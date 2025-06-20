@@ -65,7 +65,7 @@ export default class BanCommand extends Command {
       {
         title: "User Banned",
         description: `user ${user} for the reason ${reason} \n Time Ban: ${tiempo}`,
-        color: ctx.client.config.enderbotColor
+        color: ctx.client.config.colors.enderbotColor
       } 
     ]});
   }

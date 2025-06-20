@@ -52,7 +52,7 @@ export default class KickCommand extends Command {
       {
         title: "Usuario Kicked",
         description: `user ${user} for the reason ${reason}`,
-        color: ctx.client.config.enderbotColor
+        color: ctx.client.config.colors.enderbotColor
       } 
     ]});
   }

@@ -1,9 +1,10 @@
 import { Client } from "seyfert";
 import { enderbotConfig } from "./classes/enderbot/Config.js";
-import { enderbotConfigType } from "#enderbot/types";
+import { Categories, enderbotConfigType } from "#enderbot/types";
 import { enderbotHCmd } from "./classes/enderbot/handleCmd.js";
 import { enderbotLogger } from "./classes/Logger.js";
 import { middlewares } from "./utils/utils/Middlewares.js";
+import { onRunError, onOptionsError, onBotPermissionsFail, onPermissionsFail } from "./utils/functions/defaults.js";
 
 export class enderbot extends Client<true> {
     override logger: enderbotLogger = new enderbotLogger({
@@ -11,7 +12,16 @@ export class enderbot extends Client<true> {
     });
     config: enderbotConfigType = new enderbotConfig();
     constructor() {
-        super({ commands: { prefix: () => { return this.config.prefix } }});
+        super({ commands: { prefix: () => { return this.config.prefix }, defaults: {
+            onRunError,
+            onOptionsError,
+            onBotPermissionsFail,
+            onPermissionsFail,
+            props: {
+                category: Categories.none,
+                usage: "No se"
+            }
+        } }});
     }
     async run() {
         this.setServices({
@@ -36,3 +46,4 @@ export class enderbot extends Client<true> {
         }
     }
 }
+

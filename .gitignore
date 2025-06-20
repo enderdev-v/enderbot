@@ -5,6 +5,7 @@ node_modules
 .env
 package-lock.json
 pnpm-lock.yaml
+pnpm-workspace.yaml
 .hinttrc
 
 ## Archivos que se autogeneran 

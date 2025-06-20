@@ -7,6 +7,9 @@ export const PrismaVersion = pack.default.devDependencies.prisma
 export const SeyfertVersion = pack.default.dependencies.seyfert;
 export const typescriptVersion= pack.default.devDependencies.typescript;
 
+export const webhookId = process.env.webhookId
+export const webhookToken = process.env.webhookToken
+
 export const bots = [
 	'924525977437077515', // <--- endkachu 
 	'710034409214181396', // <--- ticket king
@@ -17,3 +20,6 @@ export const UsualColors = {
     White: 0xf4feff,
     Color: "FFFDBE"
 }
+
+export const GithubRepo = "https://github.com/enderdev-v/enderbot"
+

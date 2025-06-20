@@ -1,7 +1,6 @@
 // @ts-check is better
 import { config } from "seyfert";
-import dotenv from "dotenv"
-dotenv.config()
+process.loadEnvFile(".env") 
 
 const token = process.env.token;
 const applicationId = process.env.appID;

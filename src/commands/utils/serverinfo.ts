@@ -1,10 +1,9 @@
-import { ChannelType } from "discord-api-types/v10";
 import { Guild, Middlewares, ReturnCache } from "seyfert";
 import { Declare, Embed, } from "seyfert";
 import { CommandContext, Command } from "seyfert"
 import ms from "ms";
 import { Watch, Yuna } from "yunaforseyfert";
-import { MessageFlags } from "seyfert/lib/types/index.js";
+import { ChannelType, MessageFlags } from "seyfert/lib/types/index.js";
 
 @Declare({
   name: 'serverinfo',
@@ -41,7 +40,7 @@ export default class ServerinfoCommand extends Command {
         const embed = new Embed()
             .setTitle(`informacion de ${guild.name}`)
             .setThumbnail(guild.iconURL())
-            .setColor(ctx.client.config.enderbotColor)
+            .setColor(ctx.client.config.colors.enderbotColor)
             .addFields(
                 {
                     name: `**Owner:**`,
