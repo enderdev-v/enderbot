@@ -1,4 +1,6 @@
 import * as pack from "../../../../package.json" with { type: "json" };
+const { DATABASE_URL, appID, token, webhookURL } = process.env
+
 
 
 export const version = pack.default.version;
@@ -23,3 +25,11 @@ export const UsualColors = {
 
 export const GithubRepo = "https://github.com/enderdev-v/enderbot"
 
+export const EnviromentKeys = {
+	DATABASE_URL,
+	token,
+	webhookId,
+	appID,
+	webhookToken,
+	webhookURL
+}

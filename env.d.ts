@@ -2,7 +2,7 @@ declare global {
 	namespace NodeJS {
 		interface ProcessEnv {
 			token: string;
-			clientid: string;
+			appID: string;
 			DATABASE_URL: string;
 			webhookURL: string;
 			webhookId: string;

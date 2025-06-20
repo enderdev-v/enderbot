@@ -4,11 +4,14 @@ import { Watch, Yuna } from "yunaforseyfert";
 import { inspect } from "util";
 import ms from "ms";
 import { getEmoji } from "#enderbot/utils/functions/functions.js";
+import { EnviromentKeys } from "#enderbot/utils/constants/Constants.js";
 const secretsRegex = /\b(?:client\.(?:config)|config|env|process\.(?:env|exit)|eval|atob|btoa)\b/;
 const concatRegex = /".*?"\s*\+\s*".*?"(?:\s*\+\s*".*?")*/;
 const awaitableRegex = /^(?:\(?)\s*await\b/;
 
 // Detect all .env keys dynamically
+
+const envRegex = new RegExp(Object.values(EnviromentKeys).map((value) => String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|"),"g");
 export const sliceText = (text: string, length: number = 240): string => (text.length > length ? `${text.slice(0, length - 3)}...` : text);
 
 export const getInspect = (object: any, depth: number = 0): string => inspect(object, { depth });
@@ -63,6 +66,7 @@ export default class EvalCommand extends Command {
                 output = await eval(code);
                 typecode = typeof output;
                 output = getInspect(output, ctx.options.depth ?? 0);
+                 if (envRegex.test(output)) output = output.replaceAll(envRegex, "✨");
 
             }
             const embed = new Embed()
@@ -80,7 +84,7 @@ export default class EvalCommand extends Command {
                     },
                     {
                         name: "⏳ Evaluated Time",
-                        value: `\`${Math.floor(Date.now() - now)}ms\``,
+                        value: `\`\`\`\n${Math.floor(Date.now() - now)}ms\n\`\`\``,
                         inline: true,
                     },
                     {
