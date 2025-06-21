@@ -36,11 +36,11 @@
 			"#enderbot/types": ["./src/enderbot.ts"],
 			"#enderbot/client": ["./src/structures/Client.ts"],
 			"#enderbot/errors": ["./src/structures/classes/Errors.ts"],
-			"#enderbot/functions/functions.js/*": ["src/structures/utils/functions/*"],
+			"#enderbot/functions/*": ["src/structures/utils/functions/*"],
 			"#enderbot/utils/*": ["./src/structures/utils/*"],
 			"#enderbot/classes/*": ["./src/structures/classes/*"],
             "#enderbot/Schemas/*": ["./src/Schemas/*"],
-			"#ryosaki/prisma": ["./generated/prisma"]
+			"#enderbot/prisma": ["./generated/prisma"]
 		}
 	},
 	"include": [
