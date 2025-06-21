@@ -1,7 +1,6 @@
 import * as pack from "../../../../package.json" with { type: "json" };
-const { DATABASE_URL, appID, token, webhookURL } = process.env
-
-
+process.loadEnvFile(".env")
+export const { DATABASE_URL, appID, token, webhookURL, webhookId, webhookToken } = process.env
 
 export const version = pack.default.version;
 
@@ -9,8 +8,6 @@ export const PrismaVersion = pack.default.devDependencies.prisma
 export const SeyfertVersion = pack.default.dependencies.seyfert;
 export const typescriptVersion= pack.default.devDependencies.typescript;
 
-export const webhookId = process.env.webhookId
-export const webhookToken = process.env.webhookToken
 
 export const bots = [
 	'924525977437077515', // <--- endkachu 

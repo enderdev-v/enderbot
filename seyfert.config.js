@@ -1,4 +1,3 @@
-// @ts-check is better
 import { config } from "seyfert";
 process.loadEnvFile(".env") 
 
@@ -15,6 +14,6 @@ const seyfert = config.bot({
         commands: "commands",
         events: "events",
     }, 
-    applicationId: applicationId
+    applicationId
  });
 export default seyfert
