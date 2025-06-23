@@ -30,8 +30,9 @@ export function memoryUsage() {
     return chalk.bold(`[RAM: ${memory.rss.toFixed(2)} B]`);
 }
 
-export const setActivity = (client: UsingClient, type: ActivityType | any, name: string, message?: string) => {
-    void client.gateway.setPresence({
+export const setActivity = (client: UsingClient, type: ActivityType | any, name: string, message: string) => {
+
+     void client.gateway.setPresence({
         activities: [{ name: name, type: type, state: message }],
         since: Date.now(),
         status: PresenceUpdateStatus.DoNotDisturb,

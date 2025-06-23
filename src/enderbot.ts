@@ -28,6 +28,7 @@ declare module "seyfert" {
 		category?: Categories;
 		usage?: string;
 	}
+	
 }
 
 // enderbot configuration

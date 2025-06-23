@@ -11,6 +11,7 @@ export class enderbot extends Client<true> {
         name: "Using Seyfert!!"
     });
     config: enderbotConfigType = new enderbotConfig();
+    isActivityRandom: boolean = true; // -> Esto permite que la activity pueda ser random o no desde el comando customact :D
     constructor() {
         super({ commands: { prefix: () => { return this.config.prefix }, defaults: {
             onRunError,
@@ -22,6 +23,9 @@ export class enderbot extends Client<true> {
                 usage: "No se"
             }
         } }});
+    }
+    ChangeActivityRandom() {
+        this.isActivityRandom = !this.isActivityRandom;
     }
     async run() {
         this.setServices({
