@@ -3,8 +3,9 @@ process.loadEnvFile(".env")
 
 const token = process.env.token;
 const applicationId = process.env.appID;
+
 if (!token) throw new Error("No pusiste el token")
-if (!token) throw new Error("No pusiste la application id")
+if (!applicationId) throw new Error("No pusiste la application id")
     
 const seyfert = config.bot({
     token: token,

@@ -45,5 +45,13 @@
     "#enderbot/utils/*": "./dist/structures/utils/*",
     "#enderbot/classes/*": "./dist/structures/classes/*",
     "#enderbot/prisma": "./generated/prisma"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@prisma/client",
+      "@prisma/engines",
+      "esbuild",
+      "prisma"
+    ]
   }
 }
