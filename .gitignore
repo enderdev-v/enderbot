@@ -10,6 +10,5 @@ pnpm-workspace.yaml
 
 ## Archivos que se autogeneran 
 tsconfig.tsbuildinfo
-eslint.config.mjs
 logs/
 generated/ 
