@@ -1,10 +1,12 @@
+
+import "#enderbot/utils/utils/anticrash.js"
+
 process.loadEnvFile(".env")
+
 import { Logger } from "seyfert";
 import { enderbot } from "#enderbot/client";
 import { customLog } from "#enderbot/classes/Logger.js";
-import "#enderbot/utils/utils/anticrash.js"
 import { webhookId, webhookToken } from "#enderbot/utils/constants/Constants.js";
-
 
 Logger.customize(customLog);
 Logger.saveOnFile = "all";

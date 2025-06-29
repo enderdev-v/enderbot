@@ -60,11 +60,10 @@ export enum LoggerLevel {
 	enderbot = 6,
 }
 export const LoggerColor = {
-	infoLogger: '#0F92A5',
+	infoLogger: '#3f7ede',
 	warnLogger: '#D5E413',
 	errorLogger: '#E23A3A',
 	debugLogger: '#9DEB02',
 	FatalLogger: "#940909",
 	checkLogger: '#2B802D',
-	enderbotLogger: '#3f7ede',
 };
