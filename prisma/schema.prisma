@@ -13,3 +13,9 @@ datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
+
+model BadBots {
+  id    String  @id  @map("_id")
+  guild String
+  Bots  String[] // Array of strings
+}

@@ -9,8 +9,6 @@ const secretsRegex = /\b(?:client\.(?:config)|config|env|process\.(?:env|exit)|e
 const concatRegex = /".*?"\s*\+\s*".*?"(?:\s*\+\s*".*?")*/;
 const awaitableRegex = /^(?:\(?)\s*await\b/;
 
-// Detect all .env keys dynamically
-
 const envRegex = new RegExp(Object.values(EnviromentKeys).map((value) => String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|"),"g");
 export const sliceText = (text: string, length: number = 240): string => (text.length > length ? `${text.slice(0, length - 3)}...` : text);
 
@@ -118,4 +116,4 @@ export default class EvalCommand extends Command {
             await ctx.editOrReply({ embeds: [embed], });
         }
     }
-}
+} // from stelle-music
