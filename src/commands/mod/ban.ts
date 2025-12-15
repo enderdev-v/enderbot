@@ -14,7 +14,7 @@ const options = {
   reason: createStringOption({
     description: "Especifica una razon"
   }),
-}
+};
 @Declare({
   name: "ban",
   description: "ban user",
@@ -43,19 +43,19 @@ export default class BanCommand extends Command {
     
     const regex = /\d+[smhdwMy]/;
      if (!regex.test(tiempo)) {
-      return console.log("No funco")
+      return console.log("No funco");
     }
-    const time = ms(tiempo)
+    const time = ms(tiempo);
 
     if (user.id === ctx.author.id) return ctx.write({ content: "no te puedes auto aislar" });
-    const member = await (await ctx.guild())?.members.fetch(user.id)
+    const member = await (await ctx.guild())?.members.fetch(user.id);
 
     try {
-      member?.ban({ delete_message_seconds: 3000 }, reason)
+      member?.ban({ delete_message_seconds: 3000 }, reason);
       if (time !== "perma") {
         setTimeout(async () => {
-          (await (await ctx.guild())?.members)?.unban(user.id)
-        }, time)
+          (await (await ctx.guild())?.members)?.unban(user.id);
+        }, time);
       }
     } catch (e) {
       console.error(e);

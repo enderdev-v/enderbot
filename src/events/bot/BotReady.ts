@@ -17,9 +17,9 @@ export default createEvent({
       });
     };
     setInterval(() => {
-    if (client.isActivityRandom) return RandomActivity()
-    }, 5e4)
+    if (client.isActivityRandom) return RandomActivity();
+    }, 5e4);
     client.logger.info(`${user.username} is ready on shard #${shard}`);
 
   }
-})
+});

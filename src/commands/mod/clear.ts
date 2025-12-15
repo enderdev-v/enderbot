@@ -1,13 +1,5 @@
 import ms from "ms";
-import {
-    type CommandContext,
-    Declare,
-    Command,
-    Options,
-    TextGuildChannel,
-    createIntegerOption,
-    Middlewares,
-} from "seyfert";
+import { type CommandContext, Declare, Command,Options, TextGuildChannel,createIntegerOption,Middlewares,} from "seyfert";
 import { Watch, Yuna } from "yunaforseyfert";
 
 const options = {
@@ -15,7 +7,7 @@ const options = {
         description: "get a a category",
         required: true
     })
-}
+};
 @Declare({
     name: "clear",
     description: "Borrar mensajes",
@@ -38,22 +30,22 @@ export default class ClearCommand extends Command {
     })
     override async run(ctx: CommandContext<typeof options>) {
         try {
-            const cantidad = ctx.options.cantidad
+            const cantidad = ctx.options.cantidad;
             const id = ctx.channelId;
-            const guild = await ctx.guild()
-            const channel = await guild?.channels.fetch(id)
+            const guild = await ctx.guild();
+            const channel = await guild?.channels.fetch(id);
             if (!(channel instanceof TextGuildChannel)) return;
 
-            if (cantidad > 99) return ctx.write({ content: "Cantidad excedida intente otra (no hay sistema pa' eso)" })
+            if (cantidad > 99) return ctx.write({ content: "Cantidad excedida intente otra (no hay sistema pa' eso)" });
             const msglist = await channel.messages.list({
                 before: ctx.message?.id || channel.lastMessageId as string,
                 limit: cantidad
-            })
-            const msgIds = msglist.map(msg => msg.id)
-            channel.messages.purge(msgIds, "Bulk Delete ")
-            ctx.write({ content: "Mensajes borrados correctamente" })
+            });
+            const msgIds = msglist.map(msg => msg.id);
+            channel.messages.purge(msgIds, "Bulk Delete ");
+            ctx.write({ content: "Mensajes borrados correctamente" });
         } catch (error) {
-            console.error('Error al eliminar los mensajes:', error);
+            console.error("Error al eliminar los mensajes:", error);
         }
 
     }

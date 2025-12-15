@@ -18,7 +18,7 @@ Este bot fue creado usando
 
 ### How to install?  💻
 
-En [Installation](/Installation.md) esta como poder instalar este bot y ponerlo en local y poder contribuir 
+En [Installation](/public/Md/Installation.md) esta como poder instalar este bot y ponerlo en local y poder contribuir 
 
 ### How to Contributing? 🤝
 

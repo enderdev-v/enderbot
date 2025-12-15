@@ -1,6 +1,6 @@
+// eslint-disable @typescript-eslint/no-explicit-any
 import { enderbot } from "#enderbot/client";
-import { PrismaClient } from "#enderbot/prisma";
-
+import { PrismaClient } from "@prisma/client";
 const prismaClient = new PrismaClient();
 export class enderbotDatabase {
     /**
@@ -12,6 +12,7 @@ export class enderbotDatabase {
     readonly prisma: PrismaClient = prismaClient;
     readonly client: enderbot;
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     constructor(client: any) {
         this.client = client;   
     }
@@ -45,6 +46,6 @@ export class enderbotDatabase {
                     id: guildId,
                     prefix: prefix,
                 },
-            })
+            });
     }
 }

@@ -15,7 +15,7 @@ const options = {
         description: "get a user",
         required: true
     })
-}
+};
 @Declare({
     name: "unmute",
     description: "Desmutear a un usuario",
@@ -38,14 +38,14 @@ export default class UnmuteCommand extends Command {
     })
     override async run(ctx: CommandContext<typeof options>) {
         const user = ctx.options.user;
-        const member = await (await ctx.guild())?.members.fetch(user.id)
+        const member = await (await ctx.guild())?.members.fetch(user.id);
         
 
         
         if (member?.mute) return ctx.write({ content: "el usuario ya esta aislado" });
 
         try {
-            member?.timeout(null)
+            member?.timeout(null);
          } catch (e) {
             console.error(e);
         }

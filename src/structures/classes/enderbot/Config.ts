@@ -1,4 +1,4 @@
-import { enderbotConfigType } from '#enderbot/types';
+import { enderbotConfigType } from "#enderbot/types";
 
 export class enderbotConfig implements enderbotConfigType {
 	colors = {
@@ -9,11 +9,11 @@ export class enderbotConfig implements enderbotConfigType {
 		infoColor: 0x085480,
 	};
 	devsId = [
-		'780277567537414165', // <- endercrack/enderdev-v
+		"780277567537414165", // <- endercrack/enderdev-v
 	];
 	ownersId = [
-		'780277567537414165' // <- endercrack/enderdev-v
+		"780277567537414165" // <- endercrack/enderdev-v
 	];
 	prefix = ["e!", "e?"];
-	inviteLink = "https://discord.com/oauth2/authorize?client_id=862905211001503774&integration_type=1&scope=applications.commands"
+	inviteLink = "https://discord.com/oauth2/authorize?client_id=862905211001503774&integration_type=1&scope=applications.commands";
 }

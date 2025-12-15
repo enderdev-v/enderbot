@@ -37,7 +37,7 @@ export class enderbot extends Client<true> {
         this.logger.info("Already nice")
     }
     async reload() {
-        await this.logger.warn("OK Ok esto es hard reload de todo")
+        await this.logger.warn("Ok Ok esto es hard reload de todo")
         try {
             await this.commands?.reloadAll()
             await this.uploadCommands()

@@ -1,9 +1,9 @@
-import { SeyfertVersion, typescriptVersion, PrismaVersion } from '#enderbot/utils/constants/Constants.js';
-import { Declare, Command, type CommandContext,  Middlewares, Embed } from 'seyfert';
+import { SeyfertVersion, typescriptVersion, PrismaVersion } from "#enderbot/utils/constants/Constants.js";
+import { Declare, Command, type CommandContext,  Middlewares, Embed } from "seyfert";
 
 @Declare({
-  name: 'botstats',
-  description: 'Informacion de desarrollo de enderbot',
+  name: "botstats",
+  description: "Informacion de desarrollo de enderbot",
   aliases: ["devnnfo", "dev"],
 })
 @Middlewares(["Onlydev", "CheckBots"])
@@ -42,7 +42,7 @@ export default class DevInfoCommand extends Command {
                  {
 
                     name: "Lenguaje:",
-                    value: `\`\`\`ts\n \"Typescript\" ver. ${typescriptVersion} \n \`\`\``,
+                    value: `\`\`\`ts\n "Typescript" ver. ${typescriptVersion} \n \`\`\``,
                     inline: false
                 },
                 {
@@ -55,7 +55,7 @@ export default class DevInfoCommand extends Command {
                     value: `>>> **RAM Usage:** **__${memoryUsage()}__** \n **CPU Usage** **__${cpuUsage().join(" ")}__**`,
                     inline: true
                 }
-            ])
+            ]);
 
         await ctx.write({ embeds: [embed] });
     

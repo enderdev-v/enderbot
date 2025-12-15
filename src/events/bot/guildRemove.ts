@@ -27,4 +27,4 @@ export default createEvent({
       embeds: [embed]
     });
   }
-}) 
+});

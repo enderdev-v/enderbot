@@ -12,7 +12,7 @@ const awaitableRegex = /^(?:\(?)\s*await\b/;
 const envRegex = new RegExp(Object.values(EnviromentKeys).map((value) => String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|"),"g");
 export const sliceText = (text: string, length: number = 240): string => (text.length > length ? `${text.slice(0, length - 3)}...` : text);
 
-export const getInspect = (object: any, depth: number = 0): string => inspect(object, { depth });
+export const getInspect = (object: unknown, depth: number = 0): string => inspect(object, { depth });
 const options = {
     code: createStringOption({
         description: "Enter some code.",
@@ -53,7 +53,7 @@ export default class EvalCommand extends Command {
         const now = Date.now();
         let code: string = ctx.options.code;
         let output: string | null = null;
-        let typecode: any;
+        let typecode: unknown;
 
         if (ctx.message) await ctx.client.channels.typing(ctx.channelId);
         try {
@@ -77,7 +77,7 @@ export default class EvalCommand extends Command {
                 .addFields(
                     {
                         name: `${await getEmoji(ctx.client, "java")} Type`,
-                        value: `${Formatter.codeBlock(typecode, "js")}`,
+                        value: `${Formatter.codeBlock(String(typecode), "js")}`,
                         inline: true,
                     },
                     {
@@ -89,9 +89,10 @@ export default class EvalCommand extends Command {
                         name: `${await getEmoji(ctx.client, "penwinlovets")} Input`,
                         value: `${Formatter.codeBlock(sliceText(ctx.options.code, 1024), "js")}`,
                     },
-                )
+                );
             await ctx.editOrReply({ embeds: [embed], });
-        } catch (error) {
+        } catch (e) {
+            console.error(e);
             const embed = new Embed()
                 .setTitle(`Error ${await getEmoji(ctx.client, "what")}`)
                 .setColor(ctx.client.config.colors.errorColor)
@@ -100,7 +101,7 @@ export default class EvalCommand extends Command {
                 .addFields(
                     {
                         name: `${await getEmoji(ctx.client, "java")} Type`,
-                        value: `${Formatter.codeBlock(typecode, "js")}`,
+                        value: `${Formatter.codeBlock(String(typecode), "js")}`,
                         inline: true,
                     },
                     {
@@ -112,7 +113,7 @@ export default class EvalCommand extends Command {
                         name: `${await getEmoji(ctx.client, "penwinlovets")} Input`,
                         value: `${Formatter.codeBlock(sliceText(ctx.options.code, 1024), "js")}`,
                     },
-                )
+                );
             await ctx.editOrReply({ embeds: [embed], });
         }
     }

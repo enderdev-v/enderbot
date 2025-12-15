@@ -1,7 +1,5 @@
-
-import "#enderbot/utils/utils/anticrash.js"
-
-process.loadEnvFile(".env")
+import "#enderbot/utils/utils/anticrash.js";
+process.loadEnvFile(".env");
 
 import { Logger } from "seyfert";
 import { enderbot } from "#enderbot/client";
@@ -19,4 +17,4 @@ client.webhooks.writeMessage(webhookId,webhookToken, {
     query: {wait: true}
 });
 
-await client.run()
+await client.run();
