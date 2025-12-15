@@ -5,4 +5,5 @@
     },
     "prisma.schemaPath": "./prisma/schema.prisma",
     "prisma.scriptRunner": "pnpm",
+    "prisma.pinToPrisma6": true,
 }

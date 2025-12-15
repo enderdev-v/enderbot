@@ -15,7 +15,8 @@
     "dev": "tsx watch ./src/index.ts",
     "build": "tsc",
     "watch": "tsc -w",
-    "logs": "node ./scripts/Cleanlogs.js"
+    "logs": "node ./scripts/Cleanlogs.js",
+    "start:prod": "node ./dist/index.js"
   },
   "engines": {
     "node": ">=22.0.0",
