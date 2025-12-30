@@ -39,7 +39,8 @@
 			"#enderbot/functions/*": ["src/structures/utils/functions/*"],
 			"#enderbot/utils/*": ["./src/structures/utils/*"],
 			"#enderbot/classes/*": ["./src/structures/classes/*"],
-			"#enderbot/prisma": ["./generated/prisma/index"]
+			"#enderbot/middlewares/*": ["./src/middlewares/*"],
+			"#enderbot/prisma": ["./generated/prisma/index"],
 		}
 	},
 	"include": [

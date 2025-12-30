@@ -1,4 +1,4 @@
-import { type CommandContext,  createStringOption, createUserOption, Declare, Options, Command, Middlewares } from "seyfert";
+import { type CommandContext,  createStringOption, createUserOption, Declare, Options, SubCommand, Middlewares } from "seyfert";
 import { Watch, Yuna } from "yunaforseyfert";
 import ms from "ms";
 
@@ -22,22 +22,14 @@ const options = {
 
 @Options(options)
 @Middlewares(["CheckBots"])
-export default class KickCommand extends Command {
+export default class KickCommand extends SubCommand {
     @Watch({
-        idle: ms("1min"),
-        beforeCreate(ctx) {
-            const watcher = Yuna.watchers.find(ctx.client, { userId: ctx.author.id, command: this });
-            if (!watcher) return;
-
-            watcher.stop("Just execute");
-        },
-
+      idle: ms("1min"),
+      beforeCreate(ctx) { const watcher = Yuna.watchers.find(ctx.client, { userId: ctx.author.id, command: this }); if (!watcher) return; watcher.stop("Just execute"); },
     })
   override async run(ctx: CommandContext<typeof options>) {
     const user = ctx.options.user;
     const reason = ctx.options.reason || "undefined <:globo:1222262926694416485>";
-
-    
 
     if (user.id === ctx.author.id) return ctx.write({ content: "no te puedes auto aislar" });
     const member = await (await ctx.guild())?.members.fetch(user.id);
@@ -48,12 +40,6 @@ export default class KickCommand extends Command {
       console.error(e);
     }
 
-    ctx.write({ embeds: [
-      {
-        title: "Usuario Kicked",
-        description: `user ${user} for the reason ${reason}`,
-        color: ctx.client.config.colors.enderbotColor
-      } 
-    ]});
+    ctx.write({ embeds: [{ title: "Usuario Kicked", description: `user ${user} for the reason ${reason}`, color: ctx.client.config.colors.enderbotColor }  ]});
   }
 }

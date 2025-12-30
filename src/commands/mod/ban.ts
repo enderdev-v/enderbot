@@ -1,19 +1,11 @@
-import { Command, type CommandContext,  createStringOption, createUserOption, Declare, Middlewares, Options } from "seyfert";
+import { SubCommand, type CommandContext,  createStringOption, createUserOption, Declare, Middlewares, Options } from "seyfert";
 import ms from "ms";
 import { Watch, Yuna } from "yunaforseyfert";
 
 const options = {
-  user: createUserOption({
-    description: "get a user",
-    required: true
-  }),
-  time: createStringOption({
-    description: "Especifica el tiempo o perma?",
-    required: true
-  }),
-  reason: createStringOption({
-    description: "Especifica una razon"
-  }),
+  user: createUserOption({ description: "get a user", required: true }),
+  time: createStringOption({ description: "Especifica el tiempo o perma?", required: true }),
+  reason: createStringOption({ description: "Especifica una razon" }),
 };
 @Declare({
   name: "ban",
@@ -23,17 +15,11 @@ const options = {
 })
 @Options(options)
 @Middlewares(["CheckBots"])
-export default class BanCommand extends Command {
+export default class BanCommand extends SubCommand {
 
     @Watch({
-        idle: ms("1min"),
-        beforeCreate(ctx) {
-            const watcher = Yuna.watchers.find(ctx.client, { userId: ctx.author.id, command: this });
-            if (!watcher) return;
-
-            watcher.stop("Just execute");
-        },
-
+      idle: ms("1min"),
+      beforeCreate(ctx) { const watcher = Yuna.watchers.find(ctx.client, { userId: ctx.author.id, command: this }); if (!watcher) return; watcher.stop("Just execute"); },
     })
 
   override async run(ctx: CommandContext<typeof options>) {
@@ -61,12 +47,6 @@ export default class BanCommand extends Command {
       console.error(e);
     }
 
-    ctx.write({ embeds: [
-      {
-        title: "User Banned",
-        description: `user ${user} for the reason ${reason} \n Time Ban: ${tiempo}`,
-        color: ctx.client.config.colors.enderbotColor
-      } 
-    ]});
+    ctx.write({ embeds: [{ title: "User Banned", description: `user ${user} for the reason ${reason} \n Time Ban: ${tiempo}`, color: ctx.client.config.colors.enderbotColor }  ]});
   }
 }

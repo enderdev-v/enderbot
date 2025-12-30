@@ -19,7 +19,7 @@ client.webhooks.writeMessage(webhookId, webhookToken, {
     body: { embeds: [embed] },
     query: { wait: true }
 }).then(async (msg) => { 
-    setTimeout(() => msg?.delete(), 5e5);
+    setTimeout(() => msg?.delete(), 5e3);
 });
 
 

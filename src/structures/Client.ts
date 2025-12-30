@@ -11,15 +11,9 @@ export class enderbot extends Client<true> {
     constructor() {
         super({
             commands: {
-                prefix: () => { return this.config.prefix }, defaults: {
-                    onRunError,
-                    onOptionsError,
-                    onBotPermissionsFail,
-                    onPermissionsFail,
-                    props: {
-                        category: Categories.none,
-                        usage: "No se"
-                    }
+                prefix: () => { return this.config.prefix; }, defaults: {
+                    onRunError, onOptionsError, onBotPermissionsFail, onPermissionsFail,
+                    props: { category: Categories.none, usage: "No se" }
                 }
             }
         });
@@ -34,19 +28,19 @@ export class enderbot extends Client<true> {
         });
         await this.start();
         await this.uploadCommands();
-        this.logger.info("Already nice")
+        this.logger.info("Already nice");
     }
     async reload() {
-        await this.logger.warn("Ok Ok esto es hard reload de todo")
+        await this.logger.warn("Ok Ok esto es hard reload de todo");
         try {
-            await this.commands?.reloadAll()
-            await this.uploadCommands()
-            await this.events?.reloadAll()
-            await this.components?.reloadAll()
-            await this.commands?.reloadAll()
+            await this.commands?.reloadAll();
+            await this.uploadCommands();
+            await this.events?.reloadAll();
+            await this.components?.reloadAll();
+            await this.commands?.reloadAll();
         } catch (e) {
-            this.logger.error(e)
-            this.logger.info("No hay servicio intentalo mas tarde")
+            this.logger.error(e);
+            this.logger.info("No hay servicio intentalo mas tarde");
         }
     }
 }

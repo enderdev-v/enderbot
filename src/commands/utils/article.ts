@@ -1,6 +1,7 @@
 import { HexColor } from "#enderbot/utils/functions/functions.js";
-import { Declare, type CommandContext, Middlewares, createStringOption, Options, Container, Separator, TextDisplay, IgnoreCommand, createBooleanOption, Section, Button, Command } from "seyfert";
+import { Declare, type CommandContext, Middlewares, createStringOption, Options, Container, Separator, TextDisplay, createBooleanOption, Section, Button, SubCommand } from "seyfert";
 import { Spacing, MessageFlags, ButtonStyle } from "seyfert/lib/types/index.js";
+import { Shortcut } from "yunaforseyfert";
 
 const options = {
     title: createStringOption({ description: "Escribe el titulo de tu articulo", required: true }),
@@ -16,11 +17,11 @@ const options = {
     name: "article",
     aliases: [],
     description: "Crea un articulo",
-    ignore: IgnoreCommand.Message
 })
 @Middlewares(["CheckBots"])
 @Options(options)
-export default class ArticleCommand extends Command {
+@Shortcut()
+export default class ArticleCommand extends SubCommand {
     override async run(ctx: CommandContext<typeof options>) {
         const title = ctx.options.title;
         const text = ctx.options.text;
