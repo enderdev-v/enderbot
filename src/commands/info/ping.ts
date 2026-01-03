@@ -7,7 +7,6 @@ import { Declare, Command, type CommandContext, Middlewares } from "seyfert";
 })
 @Middlewares(["CheckBots"])
 export default class PingCommand extends Command {
-
   override async run(ctx: CommandContext) {
     await ctx.write({content: `Pong! ${ctx.client.gateway.latency}ms`});
   }

@@ -39,18 +39,20 @@
     "discord-arts": "0.6.1",
     "dotenv": "16.4.5",
     "ms": "2.1.3",
-    "seyfert": "3.1.2",
+    "seyfert": "4.0.0",
     "ts-pattern": "^5.7.1",
     "yunaforseyfert": "^1.1.3"
   },
   "imports": {
-    "#enderbot/types": ["./dist/enderbot.js"],
+    "#enderbot/types": [
+      "./dist/enderbot.js"
+    ],
     "#enderbot/client": "./dist/structures/Client.js",
     "#enderbot/errors": "./dist/structures/classes/Errors.js",
     "#enderbot/functions/functions.js": "./dist/structures/utils/functions.js",
     "#enderbot/utils/*": "./dist/structures/utils/*",
     "#enderbot/classes/*": "./dist/structures/classes/*",
-		"#enderbot/middlewares/*": "./dist/middlewares/*",
+    "#enderbot/middlewares/*": "./dist/middlewares/*",
     "#enderbot/prisma": "./generated/prisma/index.js"
   },
   "pnpm": {

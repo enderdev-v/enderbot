@@ -2,6 +2,7 @@ import { Command, CommandContext, createStringOption, Declare, Message, Middlewa
 import { Watch, Yuna } from "yunaforseyfert";
 import ms from "ms";
 import { match } from "ts-pattern";
+import { Categories } from "#enderbot/types";
 
 export const options = {
     option: createStringOption({
@@ -14,7 +15,11 @@ export const options = {
 @Declare({
     name: "reload",
     description: "recarga algun que otro comando xd",
-    integrationTypes: ["GuildInstall"]
+    integrationTypes: ["GuildInstall"],
+    props: {
+    category: Categories.dev,
+    usage: "reload <option>"
+  }
 })
 @Options(options)
 @Middlewares(["Onlydev", "CheckBots"])

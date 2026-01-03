@@ -1,9 +1,10 @@
-import { Client } from "seyfert";
+import { Client, LimitedMemoryAdapter } from "seyfert";
 import { enderbotConfig } from "./classes/enderbot/Config.js";
 import { Categories, enderbotConfigType } from "#enderbot/types";
 import { enderbotHCmd } from "./classes/enderbot/handleCmd.js";
 import { middlewares } from "./utils/utils/Middlewares.js";
 import { onRunError, onOptionsError, onBotPermissionsFail, onPermissionsFail } from "./utils/functions/defaults.js";
+import ms from "ms";
 
 export class enderbot extends Client<true> {
     config: enderbotConfigType = new enderbotConfig();
@@ -22,10 +23,12 @@ export class enderbot extends Client<true> {
         this.isActivityRandom = !this.isActivityRandom;
     }
     async run() {
-        this.setServices({
-            handleCommand: enderbotHCmd,
-            middlewares: middlewares
-        });
+        this.setServices({ handleCommand: enderbotHCmd, middlewares: middlewares, cache: { adapter: new LimitedMemoryAdapter({
+                    member: {
+                        expire: ms("10min"),
+                        limit: 50,
+                    }
+                }),disabledCache: { voiceStates: true, stageInstances: true, presences: true, stickers: true, emojis: true } }});
         await this.start();
         await this.uploadCommands();
         this.logger.info("Already nice");

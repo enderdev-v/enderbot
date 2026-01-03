@@ -5,6 +5,7 @@ import { inspect } from "util";
 import ms from "ms";
 import { getEmoji } from "#enderbot/utils/functions/functions.js";
 import { EnviromentKeys } from "#enderbot/utils/constants/Constants.js";
+import { Categories } from "#enderbot/types";
 const secretsRegex = /\b(?:client\.(?:config)|config|env|process\.(?:env|exit)|eval|atob|btoa)\b/;
 const concatRegex = /".*?"\s*\+\s*".*?"(?:\s*\+\s*".*?")*/;
 const awaitableRegex = /^(?:\(?)\s*await\b/;
@@ -31,6 +32,10 @@ const options = {
     defaultMemberPermissions: ["ManageGuild", "Administrator"],
     integrationTypes: ["GuildInstall"],
     contexts: ["Guild"],
+    props: {
+    category: Categories.dev,
+    usage: "eval <code>"
+  }
 })
 @Options(options)
 @Middlewares(["Onlydev", "CheckBots"])

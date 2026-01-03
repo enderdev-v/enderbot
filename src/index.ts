@@ -3,6 +3,7 @@ import { Embed, Logger, } from "seyfert";
 import { enderbot } from "#enderbot/client";
 import { customLog } from "#enderbot/classes/Logger.js";
 import { webhookId, webhookToken } from "#enderbot/utils/constants/Constants.js";
+import { ChannelType } from "seyfert/lib/types/index.js";
 process.loadEnvFile(".env");
 
 Logger.customize(customLog);
@@ -11,6 +12,15 @@ Logger.dirname = "logs";
 
 export const client = new enderbot();
 
+client.cache.channels!.filter = (
+    channel
+) => {
+    return ![
+        ChannelType.DM,
+        ChannelType.GroupDM
+    ].includes(channel.type);
+};
+
 const embed = new Embed().setTitle("enderbot is started!").setDescription("enderbot is now running smoothly.").setColor(client.config.colors.enderbotColor).setTimestamp(new Date()).setFooter({ text: "enderbot" }).setThumbnail("https://enderdev.vercel.app/enderdev.jpg");
 
 
@@ -18,7 +28,7 @@ const embed = new Embed().setTitle("enderbot is started!").setDescription("ender
 client.webhooks.writeMessage(webhookId, webhookToken, {
     body: { embeds: [embed] },
     query: { wait: true }
-}).then(async (msg) => { 
+}).then(async (msg) => {
     setTimeout(() => msg?.delete(), 5e3);
 });
 

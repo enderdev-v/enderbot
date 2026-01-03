@@ -14,11 +14,11 @@ export default class InfoCommand extends Command {
             new Section()
                 .setComponents(
                     new TextDisplay().setContent([
-                        "# Informacion de ***${ctx.client.me.username}***",
-                        "***Hola soy ${ctx.client.me.username}, soy un bot divertido y personal.***",
+                        `# Informacion de ***${ctx.client.me.username}***`,
+                        `***Hola soy ${ctx.client.me.username}, soy un bot divertido y personal.***`,
                         "Claro tengo algunas funciones de proteccion y todo eso pero me concentro en pasarmela bien xd",
-                        "- Prefix: **\" ${ctx.client.config.prefix.join(", ")} \"**",
-                        "- Creado el: **\"${ctx.client.me.createdAt.toLocaleDateString()}\"**",
+                        `- Prefix: **"${ctx.client.config.prefix.join(", ")}"**`,
+                        `- Creado el: **"${ctx.client.me.createdAt.toLocaleDateString()}"**`,
                     ].join("\n")),
                 )
                 .setAccessory(new Thumbnail().setMedia(ctx.client.me.avatarURL({ forceStatic: true, size: 64 }) as string)),

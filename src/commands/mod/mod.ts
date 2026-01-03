@@ -1,7 +1,7 @@
 import { AutoLoad, Command, Declare, Middlewares,} from "seyfert";
 
 @Declare({
-    name: "mods",
+    name: "mod",
     description: "Categoria de comandos moderacion",
     integrationTypes: ["GuildInstall", "UserInstall"],
 })

@@ -1,37 +1,20 @@
+import { Categories } from "#enderbot/types";
 import { SeyfertVersion, typescriptVersion, PrismaVersion } from "#enderbot/utils/constants/Constants.js";
+import { cpuUsage, memoryUsage } from "#enderbot/utils/functions/functions.js";
 import { Declare, Command, type CommandContext,  Middlewares, Embed } from "seyfert";
 
 @Declare({
   name: "botstats",
   description: "Informacion de desarrollo de enderbot",
   aliases: ["devnnfo", "dev"],
+  props: {
+    category: Categories.dev,
+    usage: "botstats"
+  }
 })
 @Middlewares(["Onlydev", "CheckBots"])
 export default class DevInfoCommand extends Command {
   override async run(ctx: CommandContext) {
-    function memoryUsage() {
-            const memory: NodeJS.MemoryUsage = process.memoryUsage();
-            const gigaBytes = memory.rss / 1024 ** 3;
-            if (gigaBytes >= 1) return `${gigaBytes.toFixed(3)} GB`;
-
-            const megaBytes = memory.rss / 1024 ** 2;
-            if (megaBytes >= 1) return `${megaBytes.toFixed(2)} MB`;
-
-            const kiloBytes = memory.rss / 1024;
-            if (kiloBytes >= 1) return `${kiloBytes.toFixed(2)}`;
-
-            return `${memory.rss.toFixed(2)}`;
-        }
-
-        function cpuUsage() {
-            const cpuUsage = process.cpuUsage();
-            const elapsedMicros = process.uptime() * 1_000_000;
-
-            const systemPercent = ((cpuUsage.system / elapsedMicros) * 100).toFixed(2);
-            const userPercent = ((cpuUsage.user / elapsedMicros) * 100).toFixed(2);
-
-            return [`System: ${systemPercent}%`, `User: ${userPercent}%`];
-        }
 
         const embed = new Embed()
             .setTitle("***Informacion de enderbot***")

@@ -4,6 +4,7 @@ import { ActivityType } from "seyfert/lib/types/index.js";
 import { match } from "ts-pattern";
 import { Watch, Yuna } from "yunaforseyfert";
 import ms from "ms";
+import { Categories } from "#enderbot/types";
 const options = {
   random: createBooleanOption({
     description: "Quieres que sea random o no?", required: true
@@ -22,6 +23,10 @@ const options = {
   name: "customact",
   description: "Customizar la actividad del bot",
   aliases: ["ca", "custacty"],
+  props: {
+    category: Categories.dev,
+    usage: "customact <ActivityType> <Name> <State>"
+  }
 })
 @Options(options)
 @Middlewares(["Onlydev", "CheckBots"])
