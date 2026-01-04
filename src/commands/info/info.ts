@@ -17,7 +17,7 @@ export default class InfoCommand extends Command {
                         `# Informacion de ***${ctx.client.me.username}***`,
                         `***Hola soy ${ctx.client.me.username}, soy un bot divertido y personal.***`,
                         "Claro tengo algunas funciones de proteccion y todo eso pero me concentro en pasarmela bien xd",
-                        `- Prefix: **"${ctx.client.config.prefix.join(", ")}"**`,
+                        `- Prefix: **"${ctx.client.config.prefix.join(", ")}r"**`,
                         `- Creado el: **"${ctx.client.me.createdAt.toLocaleDateString()}"**`,
                     ].join("\n")),
                 )

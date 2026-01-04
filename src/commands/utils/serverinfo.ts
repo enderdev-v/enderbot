@@ -18,13 +18,17 @@ export default class ServerinfoCommand extends SubCommand {
   })
   override async run(ctx: CommandContext) {
     // Declare variables
-    const guild = await ctx.guild();
-    const members = await guild?.members.list();
-    const channels = await guild?.channels.list();
+    const guild = await ctx.guild("cache", { with_counts: true }); if (!guild) return;
+    const roles = await guild?.roles.list();
     const nivel = { "0": "Ningúno", "1": "Bajo", "2": "Medio", "3": "Alto", "4": "Muy alto" };
-    const bots = members?.filter(member => member.user.bot).length;
-    const usuarios = members?.filter(member => !member.user.bot).length;
+    // Members
+    
+    const bots = roles.filter(role => role.managed).length;
+    const usuarios = guild.memberCount as number  - bots;
     const very = nivel[guild?.verificationLevel as GuildVerificationLevel];
+
+    // Channels
+    const channels = await guild.channels.list();
     const texto = channels?.filter(channel => channel.type === ChannelType.GuildText).length;
     const voz = channels?.filter(channel => channel.type === ChannelType.GuildVoice).length;
     const cate = channels?.filter(channel => channel.type === ChannelType.GuildCategory).length;
@@ -39,7 +43,7 @@ export default class ServerinfoCommand extends SubCommand {
         { name: "**Owner:**", value: `__${await guild?.fetchOwner()}__`, inline: false },
         { name: "**Se creo:**", value: `${guild?.createdAt.toLocaleDateString()}`, inline: false },
         { name: "```Usuarios```", value: `> Miembros en total: **${guild?.memberCount}** \n > Usuarios: **${usuarios}** \n > Bots: ${bots}`, inline: true },
-        { name: "```Stats```", value: `> Roles: ${(await guild?.roles.list())?.length} \n > Nivel Verificacion: ${very} \n > Canales de texto: ${texto} \n > Canales de voz: ${voz} \n > Canales de escenario: ${stage} \n > Categorias: ${cate} \n > Foros: ${foro}`, inline: true }
+        { name: "```Stats```", value: `> Roles: ${roles.length} \n > Nivel Verificacion: ${very} \n > Canales de texto: ${texto} \n > Canales de voz: ${voz} \n > Canales de escenario: ${stage} \n > Categorias: ${cate} \n > Foros: ${foro}`, inline: true }
       );
 
     ctx.write({ embeds: [embed], flags: MessageFlags.Ephemeral });

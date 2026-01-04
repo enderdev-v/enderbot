@@ -1,7 +1,7 @@
-import { Onlydev } from "src/middlewares/OnlyDev.js"
-import { CheckBots } from "src/middlewares/CheckBots.js"
+import { Onlydev } from "../../../middlewares/OnlyDev.js";
+import { CheckBots } from "../../../middlewares/CheckBots.js";
 
 export const middlewares = {
     Onlydev,
     CheckBots
-}
+};

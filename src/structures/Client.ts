@@ -28,7 +28,7 @@ export class enderbot extends Client<true> {
                         expire: ms("10min"),
                         limit: 50,
                     }
-                }),disabledCache: { voiceStates: true, stageInstances: true, presences: true, stickers: true, emojis: true } }});
+                }),disabledCache: { voiceStates: true, stageInstances: true, stickers: true, emojis: true } }});
         await this.start();
         await this.uploadCommands();
         this.logger.info("Already nice");
