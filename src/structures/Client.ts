@@ -5,8 +5,10 @@ import { enderbotHCmd } from "./classes/enderbot/handleCmd.js";
 import { middlewares } from "./utils/utils/Middlewares.js";
 import { onRunError, onOptionsError, onBotPermissionsFail, onPermissionsFail } from "./utils/functions/defaults.js";
 import ms from "ms";
+import { enderbotDatabase } from "./classes/enderbot/enderbotDB.js";
 
 export class enderbot extends Client<true> {
+    db: enderbotDatabase = new enderbotDatabase(this);
     config: enderbotConfigType = new enderbotConfig();
     isActivityRandom: boolean = true; // -> Esto permite que la activity pueda ser random o no desde el comando customact :D
     constructor() {

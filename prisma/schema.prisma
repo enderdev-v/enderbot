@@ -15,7 +15,18 @@ datasource db {
 }
 
 model BadBots {
-  id    String  @id  @map("_id")
-  guild String
-  Bots  String[] // Array of strings
+  guildId    String  @id  @map("_id")
+  bots  String[] // Array of strings
+}
+model ConfigGuild  {
+  guildId    String  @id  @map("_id")
+  config Int  @default(0)// Bits xd 
+}
+
+
+model TwitterNotifications {
+  guildId        String   @id @map("_id")
+  channelId   String
+  lastSent  DateTime
+  accountName String
 }
