@@ -24,9 +24,7 @@ model ConfigGuild  {
 }
 
 
-model TwitterNotifications {
+model messageCrossPost {
   guildId        String   @id @map("_id")
   channelId   String
-  lastSent  DateTime
-  accountName String
 }

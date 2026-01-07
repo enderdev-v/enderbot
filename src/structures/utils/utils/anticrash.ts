@@ -1,9 +1,9 @@
 import { LoggerColor } from "#enderbot/types";
 import chalk from "chalk";
 import { inspect } from "node:util";
-import { Embed } from "seyfert"
+import { Embed } from "seyfert";
 import { memoryUsage } from "../functions/functions.js";
-import { client } from "../../../index.js"
+import { client } from "../../../index.js";
 import { webhookId, webhookToken } from "#enderbot/utils/constants/Constants.js";
 // unhandledRejection
 

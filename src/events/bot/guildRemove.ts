@@ -11,20 +11,9 @@ export default createEvent({
       .setTitle(`I left from other server ${sad}`)
       .setThumbnail(client.me.avatarURL({ size: 1024, extension: "png" }) || "")
       .setColor(client.config.colors.enderbotColor)
-      .addFields(
-        {
-          name: "Server Name",
-          value: (guild as Guild).name,
-        },
-        {
-          name: "Server ID",
-          value: (guild as Guild).id,
-        },
-      )
+      .addFields({ name: "Server Name",  value: (guild as Guild).name, }, { name: "Server ID", value: (guild as Guild).id, })
       .setTimestamp();
 
-    await client.messages.write("1386447116800364594", {
-      embeds: [embed]
-    });
+    await client.messages.write("1386447116800364594", { embeds: [embed] });
   }
 });

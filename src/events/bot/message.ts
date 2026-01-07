@@ -7,6 +7,11 @@ export default createEvent({
 		// Mention message
 		if (message.author.bot) return;
 		if (message.content.match(`<@${client.me.id}>`)) return message.reply({ content: `hola este es mi prefix es: ${client.config.prefix.join(", ")}` });
+		const crossPostData = await client.db.prisma.messageCrossPost.findUnique({ where: { guildId: message.guildId } });
+		if (crossPostData) {
+			if (message.channelId !== crossPostData.channelId) return;
+			message.crosspost();
+		}
 		// AntiLink System
 		const ConfigGuildData = await client.db.prisma.configGuild.findUnique({ where: { guildId: message.guildId } });
 		if (!ConfigGuildData) return; if (!(ConfigGuildData.config & ConfigFlags.AntiLinkFilter)) return; // AntiLinkFilter flag check

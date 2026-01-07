@@ -1,6 +1,6 @@
 // eslint-disable @typescript-eslint/no-explicit-any
 import { enderbot } from "#enderbot/client";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "#enderbot/prisma";
 const prismaClient = new PrismaClient();
 export class enderbotDatabase {
     /**

@@ -44,7 +44,9 @@
     "yunaforseyfert": "^1.1.3"
   },
   "imports": {
-    "#enderbot/types": ["./dist/enderbot.js"],
+    "#enderbot/types": [
+      "./dist/enderbot.js"
+    ],
     "#enderbot/client": "./dist/structures/Client.js",
     "#enderbot/errors": "./dist/structures/classes/Errors.js",
     "#enderbot/functions/functions.js": "./dist/structures/utils/functions.js",
@@ -54,6 +56,11 @@
     "#enderbot/prisma": "./generated/prisma/index.js"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["@prisma/client", "@prisma/engines", "esbuild", "prisma" ]
+    "onlyBuiltDependencies": [
+      "@prisma/client",
+      "@prisma/engines",
+      "esbuild",
+      "prisma"
+    ]
   }
 }
