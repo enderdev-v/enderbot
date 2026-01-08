@@ -10,7 +10,7 @@ export default createEvent({
 			if (!ConfigGuildData || !(ConfigGuildData.config & ConfigFlags.AntiLinkFilter)) return;
 			
 			const AntilinkData = await client.db.prisma.antilink.findUnique({ where: { guildId: message.guildId! } });
-			const roles = await message.member?.roles.keys || [];
+			const roles = message.member?.roles.keys || [];
 			// Check for exceptions 
 			if (AntilinkData?.MembersExceptions.includes(message.author.id) || AntilinkData?.RolesExceptions.some(roleId => roles.includes(roleId))) return;
 			if (!link.test(message.content) || message.content.match(".destroy") || message.content.match("@everyone")) return;
