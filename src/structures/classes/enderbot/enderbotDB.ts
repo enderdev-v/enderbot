@@ -1,6 +1,6 @@
 // eslint-disable @typescript-eslint/no-explicit-any
 import { enderbot } from "#enderbot/client";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "#enderbot/prisma";
 const prismaClient = new PrismaClient();
 export class enderbotDatabase {
     /**
@@ -32,20 +32,5 @@ export class enderbotDatabase {
         } catch (error) {
             this.client.logger.fatal("Error disconnecting from the database:", error);
         }
-    }
-    // Prefix Config
-    async getPrefix(guildId: string): Promise<string> {
-        const data = await this.prisma.prefix.findUnique({ where: { id: guildId } });
-        return data?.prefix ?? "?";
-    }
-     public async setPrefix(guildId: string, prefix: string): Promise<void> {
-        await this.prisma.prefix.upsert({
-                where: { id: guildId },
-                update: { prefix: prefix },
-                create: {
-                    id: guildId,
-                    prefix: prefix,
-                },
-            });
     }
 }

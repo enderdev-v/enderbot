@@ -1,10 +1,10 @@
 import { AutoLoad, Command, Declare, Middlewares,} from "seyfert";
 
 @Declare({
-    name: "mod",
-    description: "Categoria de comandos moderacion",
+    name: "config",
+    description: "Categoria de comandos configuracion",
     integrationTypes: ["GuildInstall"],
 })
 @Middlewares(["CheckBots"])
 @AutoLoad()
-export default class modCommand extends Command {}
+export default class ConfigCommand extends Command {}
