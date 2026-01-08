@@ -12,7 +12,5 @@ export default createEvent({
 			if ((message.channelId !== crossPostData.channelId) && !channel.isNews()) return;
 			message.crosspost();
 		}
-		// AntiLink System
-		
     }
 });
