@@ -1,3 +1,4 @@
+import { getEmoji } from "#enderbot/utils/functions/functions.js";
 import { Declare, Command, type CommandContext, Middlewares } from "seyfert";
 
 @Declare({
@@ -8,6 +9,7 @@ import { Declare, Command, type CommandContext, Middlewares } from "seyfert";
 @Middlewares(["CheckBots"])
 export default class PingCommand extends Command {
   override async run(ctx: CommandContext) {
-    await ctx.write({content: `Pong! ${ctx.client.gateway.latency}ms`});
+    const shine = await getEmoji(ctx.client, "shine")
+    await ctx.write({content: `${shine} Pong! ${ctx.client.gateway.latency}ms`});
   }
 }
