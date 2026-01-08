@@ -22,7 +22,7 @@ const options = {
 @Options(options)
 export default class GuildCommand extends SubCommand {
     override async run(ctx: CommandContext<typeof options>) {
-        const guild = await ctx.guild();
+        const guild = await ctx.guild(); if (!guild || !ctx.guildId) return;
         // Options
         const exception = ctx.options.exception;
         const value = ctx.options.value;
@@ -41,11 +41,7 @@ export default class GuildCommand extends SubCommand {
             default: ctx.write({ content: "Opción no válida" }); break;
         }
 
-        const saveData = member === null ? { RolesExceptions: ArrRoles, MembersExceptions: ArrMembers } : { MembersExceptions: ArrMembers , RolesExceptions: ArrRoles }; // Create
-        const newData = member ? { MembersExceptions: ArrMembers, RolesExceptions: ArrRoles } : { RolesExceptions: ArrRoles, MembersExceptions: ArrMembers }; // Update
-
-        // @ts-expect-error Ignore Is for types
-        await ctx.client.db.prisma.antilink.upsert({ where: { guildId: ctx.guildId }, update: saveData, create: { guildId: ctx.guildId, ...newData, } });
+        await ctx.client.db.prisma.antilink.upsert({ where: { guildId: ctx.guildId }, update: { RolesExceptions: ArrRoles, MembersExceptions: ArrMembers }, create: { guildId: ctx.guildId, MembersExceptions: ArrMembers , RolesExceptions: ArrRoles, } });
         return ctx.write({ content: `Excepciones de Antilinks \n se ha añadido a ${member ? `<@${exception.id}>` : `<@&${exception.id}>`}` });
 
     }

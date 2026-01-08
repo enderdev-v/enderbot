@@ -1,13 +1,21 @@
-import { Declare, SubCommand, type CommandContext, Middlewares, createChannelOption, Options } from "seyfert";
+import { Declare, SubCommand, type CommandContext, Middlewares, Options, createChannelOption, createStringOption } from "seyfert";
 const options = {
-    option: createChannelOption({
-        description: "Channel Options",
+    channel: createChannelOption({
+        description: "Member Options",
         required: true,
     }),
+    value: createStringOption({
+        description: "Config Value",
+        required: true,
+        choices: [
+            { name: "Delete", value: "delete" },
+            { name: "Adding", value: "add" },
+        ]
+    })
 };
 @Declare({
-    name: "crosspost",
-    description: "configuracion de auto crosspost",
+    name: "crosspot",
+    description: "Configura los canales de crosspost",
     integrationTypes: ["GuildInstall"]
 })
 @Middlewares(["CheckBots"])
@@ -15,9 +23,19 @@ const options = {
 export default class GuildCommand extends SubCommand {
     override async run(ctx: CommandContext<typeof options>) {
         if (!ctx.guildId) return;
-        const option = ctx.options.option;
-        await ctx.client.db.prisma.messageCrossPost.upsert({ where: { guildId: ctx.guildId }, update: { channelId: option.id }, create: { guildId: ctx.guildId, channelId: option.id } });
-        return ctx.write({ content: `Configuracion de <#${option.id}> creada, ahora cada mensaje sera publicado automaticamente` });
+        // Options
+        const channel = ctx.options.channel;
+        const value = ctx.options.value;
+
+        const data = await ctx.client.db.prisma.messageCrossPost.findUnique({ where: { guildId: ctx.guildId! } });
+        const ArrChannels = data?.channelIds || [];
+        switch (value) {
+            case "add": ArrChannels.push(channel.id); break;
+            case "delete":  { const index = ArrChannels.indexOf(channel.id); if (index > -1) ArrChannels.splice(index, 1); } break;
+            default: ctx.write({ content: "Opción no válida" }); break;
+        }
+        await ctx.client.db.prisma.messageCrossPost.upsert({ where: { guildId: ctx.guildId }, update: {channelIds: ArrChannels}, create: { guildId: ctx.guildId, channelIds: ArrChannels } });
+        return ctx.write({ content: `Configuracion de <#${channel.id}> creada, ahora cada mensaje sera publicado automaticamente` });
 
     }
 }

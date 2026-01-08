@@ -31,5 +31,5 @@ model Antilink {
 
 model messageCrossPost {
   guildId        String   @id @map("_id")
-  channelId   String
+  channelIds   String[]
 }
