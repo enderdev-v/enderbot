@@ -1,3 +1,4 @@
+import { Categories } from "#enderbot/types";
 import { ConfigFlags } from "#enderbot/utils/constants/ConfigFlags.js";
 import { Declare, SubCommand, type CommandContext, Middlewares, createIntegerOption, createBooleanOption, Options } from "seyfert";
 const options = {
@@ -16,7 +17,11 @@ const options = {
 @Declare({
   name: "guild",
   description: "configuracion de guild",
-  integrationTypes: ["GuildInstall"]
+  integrationTypes: ["GuildInstall"],
+  props:{
+    category: Categories.config,
+    usage: "guild <option> <value>",
+  }
 })
 @Middlewares(["CheckBots"])
 @Options(options)

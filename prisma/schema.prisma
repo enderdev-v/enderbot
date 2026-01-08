@@ -23,6 +23,11 @@ model ConfigGuild  {
   config Int  @default(0)// Bits xd 
 }
 
+model Antilink {
+  guildId String  @id  @map("_id")
+  MembersExceptions String[] 
+  RolesExceptions String[] 
+}
 
 model messageCrossPost {
   guildId        String   @id @map("_id")
