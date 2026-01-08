@@ -20,7 +20,8 @@ model BadBots {
 }
 model ConfigGuild  {
   guildId    String  @id  @map("_id")
-  config Int  @default(0)// Bits xd 
+  config Int  @default(0) // Bits xd 
+  channelId String?
 }
 
 model Antilink {

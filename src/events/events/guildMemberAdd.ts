@@ -9,7 +9,7 @@ export default createEvent({
         const BadBotsdata = await client.db.prisma.badBots.findUnique({ where: { guildId: member.guildId } });
         if((!BadBotsdata || !guildConfig) || !(guildConfig.config & ConfigFlags.BadBotsFilter)) return; 
         if (!BadBotsdata.bots.includes(member.id)) return;
-        
+        if (guildConfig.channelId) await client.messages.write(guildConfig.channelId, { content: `bot baneado como ${member.user.tag} en ${member.guild.name}`, });
         await member.ban({ delete_message_seconds: 0 }, "Este bot está catalogado como malo o malicioso").catch(e => { client.logger.error("Error banning bad bot:", e); });
     }
 });

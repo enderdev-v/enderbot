@@ -7,10 +7,9 @@ export default createEvent({
     async run(thread, client) {
         const data = await client.db.prisma.configGuild.findUnique({ where: { guildId: thread.guildId } });
         if (!data || !(data.config & ConfigFlags.ThreadLinksFilter)) return; 
-
-        // client.channels.cache.get("1049143528007159928").send(`thread creado como ${thread.name} en ${thread.guild.name}`)
+        if (data.channelId) await client.messages.write(data.channelId, { content: `thread creado como ${thread.name} en ${thread.guild.name}`, });
         if (!link.test(thread.name)) return;
         thread.delete();
-        // client.channels.cache.get("1049143528007159928").send(`thread con links eliminado`)        
+        if (data.channelId) await client.messages.write(data.channelId, { content: `# Thread AuditLog \n Se ha eliminado un thread que contenia links en su nombre: \`${thread.name}\``, });
     }
 });

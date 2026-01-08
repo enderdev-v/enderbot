@@ -31,6 +31,7 @@ export default createEvent({
 			if (AntilinkData?.MembersExceptions.includes(message.author.id) || AntilinkData?.RolesExceptions.some(roleId => roles.includes(roleId))) return;
 			if (!link.test(message.content) || message.content.match(".destroy") || message.content.match("@everyone")) return;
 			// Delete message and notify user
+			if (ConfigGuildData.channelId) await client.messages.write(ConfigGuildData.channelId, { content: `Mensaje con link eliminado de ${message.author.tag} en ${message.guild?.name}` });
 			message.write({ content: "Hola por favor no mandes links" }).then(m => { setTimeout(async () => { await m.delete(); }, 4000); });
 			await message.delete();
 			// Catch errors
